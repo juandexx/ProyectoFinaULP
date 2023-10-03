@@ -46,11 +46,11 @@ public class Paciente {
         this.idPaciente = idPaciente;
     }
 
-    public int getdni() {
+    public int getDni() {
         return dni;
     }
 
-    public void setdni(int dni) {
+    public void setDni(int dni) {
         this.dni = dni;
     }
 

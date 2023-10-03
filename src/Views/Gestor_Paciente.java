@@ -1,15 +1,15 @@
 
 package Views;
 
-import AccesoDB.Paciente_DB;
+import AccesoDB.Paciente_Data;
 import Entidades.Paciente;
 
 
 public class Gestor_Paciente extends javax.swing.JInternalFrame {
-    private Paciente_DB pdb;
+    private Paciente_Data pdb;
 
 
-    public Gestor_Paciente(Paciente_DB pdb) {
+    public Gestor_Paciente(Paciente_Data pdb) {
         initComponents();
         this.pdb = pdb;
     }
@@ -30,7 +30,7 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
         TFdni = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         Bagregar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        Beliminar = new javax.swing.JButton();
         TFnombre = new javax.swing.JTextField();
         TFapellido = new javax.swing.JTextField();
         TFdomicilio = new javax.swing.JTextField();
@@ -38,6 +38,7 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
         TFpesoactual = new javax.swing.JTextField();
         TFpesodeseado = new javax.swing.JTextField();
         RBestado = new javax.swing.JRadioButton();
+        Bactualizar = new javax.swing.JButton();
 
         jLabel1.setText("PACIENTE");
 
@@ -57,64 +58,38 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
 
         jButton1.setText("Buscar");
 
-        Bagregar.setText("Nuevo Paciente");
+        Bagregar.setText("Ingreso Nuevo Paciente");
         Bagregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BagregarActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Eliminar Paciente");
+        Beliminar.setText("Eliminar Paciente");
+        Beliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BeliminarActionPerformed(evt);
+            }
+        });
 
         RBestado.setText("ESTADO");
+
+        Bactualizar.setText("Actualizar Datos Paciente");
+        Bactualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BactualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addComponent(jLabel1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(TFnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(TFdomicilio))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(TFpesoactual)))
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(TFpesodeseado))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(TFcelular))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(TFapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(Bagregar)
-                                .addGap(32, 32, 32)
-                                .addComponent(jButton3)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -122,8 +97,51 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton1)
                                 .addGap(18, 18, 18)
-                                .addComponent(RBestado)))))
-                .addContainerGap(48, Short.MAX_VALUE))
+                                .addComponent(RBestado))
+                            .addComponent(Beliminar)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(TFnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 6, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(TFdomicilio))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(TFpesoactual)))
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(Bactualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel8)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(TFpesodeseado))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel5)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(TFcelular))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel6)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(TFapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(169, 169, 169)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(Bagregar)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,9 +174,11 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
                     .addComponent(TFpesodeseado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(Bagregar))
-                .addContainerGap(90, Short.MAX_VALUE))
+                    .addComponent(Bagregar)
+                    .addComponent(Bactualizar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(Beliminar)
+                .addGap(31, 31, 31))
         );
 
         pack();
@@ -177,9 +197,29 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
       pdb.agregarPaciente(nuevo);
     }//GEN-LAST:event_BagregarActionPerformed
 
+    private void BeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BeliminarActionPerformed
+        int dni = Integer.parseInt(TFdni.getText());
+        pdb.eliminarPaciente(dni);
+    }//GEN-LAST:event_BeliminarActionPerformed
+
+    private void BactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BactualizarActionPerformed
+      int dni = Integer.parseInt(TFdni.getText());
+      String apellido = TFapellido.getText();
+      String nombre = TFnombre.getText();
+      String domicilio = TFdomicilio.getText();
+      int celular = Integer.parseInt(TFcelular.getText());
+      double pesoActual = Double.valueOf(TFpesoactual.getText());
+      double pesoDeseado = Double.valueOf(TFpesodeseado.getText());
+      boolean estado = RBestado.isSelected();  
+      Paciente existente = new Paciente(dni, apellido, nombre, domicilio, celular, pesoActual, pesoDeseado, estado);
+      pdb.modificarPaciente(existente);
+    }//GEN-LAST:event_BactualizarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Bactualizar;
     private javax.swing.JButton Bagregar;
+    private javax.swing.JButton Beliminar;
     private javax.swing.JRadioButton RBestado;
     private javax.swing.JTextField TFapellido;
     private javax.swing.JTextField TFcelular;
@@ -189,7 +229,6 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField TFpesoactual;
     private javax.swing.JTextField TFpesodeseado;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

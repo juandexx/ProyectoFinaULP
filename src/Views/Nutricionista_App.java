@@ -1,18 +1,18 @@
 package Views;
 
-import AccesoDB.Coneccion_DB;
-import AccesoDB.Paciente_DB;
+import AccesoDB.Coneccion_Data;
+import AccesoDB.Paciente_Data;
 import Entidades.Paciente;
 
 public class Nutricionista_App extends javax.swing.JFrame {
 
-    private Coneccion_DB con;
-    private Paciente_DB pdb;
+    private Coneccion_Data con;
+    private Paciente_Data pdb;
     private Paciente pac;
 
     public Nutricionista_App() {
         initComponents();
-        pdb = new Paciente_DB();
+        pdb = new Paciente_Data();
     }
 
     @SuppressWarnings("unchecked")

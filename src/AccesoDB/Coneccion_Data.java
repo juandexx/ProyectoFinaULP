@@ -6,14 +6,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-public class Coneccion_DB {
+public class Coneccion_Data {
 
     private static final String URL = "jdbc:mariadb://localhost/";
     private static final String DB = "nutricionista";
     private static final String USUARIO = "root";
     private static String PASSWORD = "";
     private static Connection connection;
-    private Coneccion_DB() {
+    private Coneccion_Data() {
     }
     public static Connection getConexion() {
         if (connection == null) {
