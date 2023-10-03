@@ -1,11 +1,7 @@
-
 package Entidades;
 
-
-
-
 public class Paciente {
-    
+
     private int idPaciente;
     private int dni;
     private String apellido;
@@ -16,7 +12,18 @@ public class Paciente {
     private double pesoDeseado;
     private boolean estado;
 
-    public Paciente(int dni, String apellido, String nombre, String domicilio, int celular, double pesoActual, double pesoDeseado,boolean estado) {
+    public Paciente() {
+    }
+
+    public Paciente(int dni, String apellido, String nombre, String domicilio, int celular) {
+        this.dni = dni;
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.domicilio = domicilio;
+        this.celular = celular;
+    }
+
+    public Paciente(int dni, String apellido, String nombre, String domicilio, int celular, double pesoActual, double pesoDeseado, boolean estado) {
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
@@ -27,15 +34,16 @@ public class Paciente {
         this.estado = estado;
     }
 
-    public boolean isEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
+    public Paciente(int idPaciente, int dni, String apellido, String nombre, String domicilio, int celular, double pesoActual, double pesoDeseado, boolean estado) {
+        this.idPaciente = idPaciente;
+        this.dni = dni;
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.domicilio = domicilio;
+        this.celular = celular;
+        this.pesoActual = pesoActual;
+        this.pesoDeseado = pesoDeseado;
         this.estado = estado;
-    }
-
-    public Paciente() {
     }
 
     public int getIdPaciente() {
@@ -101,16 +109,20 @@ public class Paciente {
     public void setPesoDeseado(double pesoDeseado) {
         this.pesoDeseado = pesoDeseado;
     }
-    
-    
-    
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     @Override
     public String toString() {
-        return "Paciente{" + "idPaciente=" + idPaciente + ", apellido=" + apellido + ", nombre=" + nombre + '}';
-            
+        return "Paciente{" + "idPaciente=" + idPaciente + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", domicilio=" + domicilio + ", celular=" + celular + ", pesoActual=" + pesoActual + ", pesoDeseado=" + pesoDeseado + ", estado=" + estado + '}';
     }
+
     
-    
-    
-    
+
 }

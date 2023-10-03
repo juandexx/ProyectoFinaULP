@@ -3,6 +3,7 @@ package Views;
 
 import AccesoDB.Paciente_Data;
 import Entidades.Paciente;
+import javax.swing.JOptionPane;
 
 
 public class Gestor_Paciente extends javax.swing.JInternalFrame {
@@ -190,6 +191,7 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BagregarActionPerformed
+      try{
       int dni = Integer.parseInt(TFdni.getText());
       String apellido = TFapellido.getText();
       String nombre = TFnombre.getText();
@@ -200,6 +202,9 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
       boolean estado = RBestado.isSelected();
       Paciente nuevo = new Paciente(dni, apellido, nombre, domicilio, celular, pesoActual, pesoDeseado, estado);
       pdb.agregarPaciente(nuevo);
+      }catch (NumberFormatException e){
+          JOptionPane.showMessageDialog(null, "Ha ingresado un parametro invalido, reintente");
+      }      
     }//GEN-LAST:event_BagregarActionPerformed
 
     private void BeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BeliminarActionPerformed

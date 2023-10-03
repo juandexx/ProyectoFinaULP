@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class Paciente_Data {
@@ -105,5 +107,57 @@ public class Paciente_Data {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno " + ex.getMessage());
         }
         return paciente;
+    }
+
+    public List<Paciente> listarPacientesActivos() {
+        ArrayList<Paciente> pacientes = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM alumno WHERE estado = 1 ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Paciente paciente = new Paciente();
+                paciente.setIdPaciente(rs.getInt("idPaciente"));
+                paciente.setDni(rs.getInt("dni"));
+                paciente.setApellido(rs.getString("apellido"));
+                paciente.setNombre(rs.getString("nombre"));
+                paciente.setDomicilio(rs.getString("domicilio"));
+                paciente.setCelular(rs.getInt("celular"));
+                paciente.setPesoActual(rs.getDouble("pasoActual"));
+                paciente.setPesoDeseado(rs.getDouble("pesoDeseado"));
+                paciente.setEstado(rs.getBoolean("estado"));
+                pacientes.add(paciente);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Pacientes " + ex.getMessage());
+        }
+        return pacientes;
+    }
+    
+    public List<Paciente> listarPacientesNoActivos() {
+        ArrayList<Paciente> pacientes = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM alumno WHERE estado = 1 ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Paciente paciente = new Paciente();
+                paciente.setIdPaciente(rs.getInt("idPaciente"));
+                paciente.setDni(rs.getInt("dni"));
+                paciente.setApellido(rs.getString("apellido"));
+                paciente.setNombre(rs.getString("nombre"));
+                paciente.setDomicilio(rs.getString("domicilio"));
+                paciente.setCelular(rs.getInt("celular"));
+                paciente.setPesoActual(rs.getDouble("pasoActual"));
+                paciente.setPesoDeseado(rs.getDouble("pesoDeseado"));
+                paciente.setEstado(rs.getBoolean("estado"));
+                pacientes.add(paciente);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Pacientes " + ex.getMessage());
+        }
+        return pacientes;
     }
 }
