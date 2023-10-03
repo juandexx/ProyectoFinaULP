@@ -80,7 +80,7 @@ public class Paciente_Data {
         }
     }
 
-   /* public void buscarPaciente(int dni) {
+    public Paciente buscarPaciente(int dni) {
         String sql = "SELECT dni,  apellido, nombre, domicilio, celular, pesoActual, pesoDeseado, estado FROM paciente WHERE dni = ?";
         Paciente paciente = null;
         try {
@@ -105,5 +105,5 @@ public class Paciente_Data {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno " + ex.getMessage());
         }
         return paciente;
-    }*/
+    }
 }
