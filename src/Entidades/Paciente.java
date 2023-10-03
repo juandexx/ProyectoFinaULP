@@ -7,7 +7,7 @@ package Entidades;
 public class Paciente {
     
     private int idPaciente;
-    private int DNI;
+    private int dni;
     private String apellido;
     private String nombre;
     private String domicilio;
@@ -16,8 +16,8 @@ public class Paciente {
     private double pesoDeseado;
     private boolean estado;
 
-    public Paciente(int DNI, String apellido, String nombre, String domicilio, int celular, double pesoActual, double pesoDeseado,boolean estado) {
-        this.DNI = DNI;
+    public Paciente(int dni, String apellido, String nombre, String domicilio, int celular, double pesoActual, double pesoDeseado,boolean estado) {
+        this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
         this.domicilio = domicilio;
@@ -46,12 +46,12 @@ public class Paciente {
         this.idPaciente = idPaciente;
     }
 
-    public int getDNI() {
-        return DNI;
+    public int getdni() {
+        return dni;
     }
 
-    public void setDNI(int DNI) {
-        this.DNI = DNI;
+    public void setdni(int dni) {
+        this.dni = dni;
     }
 
     public String getApellido() {
