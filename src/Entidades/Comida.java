@@ -1,13 +1,12 @@
-
 package Entidades;
 
-
 public class Comida {
-    
+
     private int idComida;
     private String nombre;
     private String detalle;
-    private double calXgr;                             
+    private double cantCalorias;
+    private boolean estado;
 
     public int getIdComida() {
         return idComida;
@@ -33,29 +32,36 @@ public class Comida {
         this.detalle = detalle;
     }
 
-    public double getCalXgr() {
-        return calXgr;
+    public double getCantCalorias() {
+        return cantCalorias;
     }
 
-    public void setCalXgr(int calXgr) {
-        this.calXgr = calXgr;
+    public void setCantCalorias(int cantCalorias) {
+        this.cantCalorias = cantCalorias;
     }
 
-    public Comida(String nombre, String detalle, int calXgr) {
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+        
+    public Comida(String nombre, String detalle, int cantCalorias) {
         this.nombre = nombre;
         this.detalle = detalle;
-        this.calXgr = calXgr;
+        this.cantCalorias = cantCalorias;
     }
 
     public Comida() {
     }
 
-    public Comida(int idComida, String nombre, String detalle, int calXgr) {
+    public Comida(int idComida, String nombre, String detalle, int cantCalorias) {
         this.idComida = idComida;
         this.nombre = nombre;
         this.detalle = detalle;
-        this.calXgr = calXgr;
+        this.cantCalorias = cantCalorias;
     }
-    
-    
+
 }
