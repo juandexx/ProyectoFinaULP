@@ -26,18 +26,14 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         TFdni = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        Bbuscar = new javax.swing.JButton();
         Bagregar = new javax.swing.JButton();
         Beliminar = new javax.swing.JButton();
         TFnombre = new javax.swing.JTextField();
         TFapellido = new javax.swing.JTextField();
         TFdomicilio = new javax.swing.JTextField();
         TFcelular = new javax.swing.JTextField();
-        TFpesoactual = new javax.swing.JTextField();
-        TFpesodeseado = new javax.swing.JTextField();
         RBestado = new javax.swing.JRadioButton();
         Bactualizar = new javax.swing.JButton();
 
@@ -53,14 +49,10 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
 
         jLabel6.setText("APELLIDO");
 
-        jLabel7.setText("PESO ACTUAL");
-
-        jLabel8.setText("PESO DESEADO");
-
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Bbuscar.setText("Buscar");
+        Bbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BbuscarActionPerformed(evt);
             }
         });
 
@@ -98,10 +90,6 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(TFpesoactual))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabel4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -112,15 +100,10 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
                                         .addComponent(TFnombre)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel8)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(TFpesodeseado, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel5)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(TFcelular, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(TFcelular, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(Bactualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel6)
@@ -134,7 +117,7 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(TFdni, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton1)
+                                        .addComponent(Bbuscar)
                                         .addGap(18, 18, 18)
                                         .addComponent(RBestado))
                                     .addComponent(Beliminar)))))
@@ -158,7 +141,7 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(TFdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
+                    .addComponent(Bbuscar)
                     .addComponent(RBestado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -172,17 +155,11 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
                     .addComponent(jLabel5)
                     .addComponent(TFdomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TFcelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(TFpesoactual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TFpesodeseado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Bagregar)
                     .addComponent(Bactualizar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(Beliminar)
                 .addGap(31, 31, 31))
         );
@@ -197,10 +174,8 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
       String nombre = TFnombre.getText();
       String domicilio = TFdomicilio.getText();
       int celular = Integer.parseInt(TFcelular.getText());
-      double pesoActual = Double.valueOf(TFpesoactual.getText());
-      double pesoDeseado = Double.valueOf(TFpesodeseado.getText());
       boolean estado = RBestado.isSelected();
-      Paciente nuevo = new Paciente(dni, apellido, nombre, domicilio, celular, pesoActual, pesoDeseado, estado);
+      Paciente nuevo = new Paciente(dni, apellido, nombre, domicilio, celular, estado);
       pdb.agregarPaciente(nuevo);
       }catch (NumberFormatException e){
           JOptionPane.showMessageDialog(null, "Ha ingresado un parametro invalido, reintente");
@@ -218,14 +193,12 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
       String nombre = TFnombre.getText();
       String domicilio = TFdomicilio.getText();
       int celular = Integer.parseInt(TFcelular.getText());
-      double pesoActual = Double.valueOf(TFpesoactual.getText());
-      double pesoDeseado = Double.valueOf(TFpesodeseado.getText());
       boolean estado = RBestado.isSelected();  
-      Paciente existente = new Paciente(dni, apellido, nombre, domicilio, celular, pesoActual, pesoDeseado, estado);
+      Paciente existente = new Paciente(dni, apellido, nombre, domicilio, celular, estado);
       pdb.modificarPaciente(existente);
     }//GEN-LAST:event_BactualizarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbuscarActionPerformed
         int dni = Integer.parseInt(TFdni.getText());
         Paciente paciente = pdb.buscarPaciente(dni);
         TFapellido.setText(paciente.getApellido());
@@ -233,12 +206,13 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
         TFdomicilio.setText(paciente.getDomicilio());
         TFcelular.setText(String.valueOf(paciente.getCelular()));
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BbuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Bactualizar;
     private javax.swing.JButton Bagregar;
+    private javax.swing.JButton Bbuscar;
     private javax.swing.JButton Beliminar;
     private javax.swing.JRadioButton RBestado;
     private javax.swing.JTextField TFapellido;
@@ -246,16 +220,11 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField TFdni;
     private javax.swing.JTextField TFdomicilio;
     private javax.swing.JTextField TFnombre;
-    private javax.swing.JTextField TFpesoactual;
-    private javax.swing.JTextField TFpesodeseado;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 }

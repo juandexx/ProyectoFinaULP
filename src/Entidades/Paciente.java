@@ -8,8 +8,6 @@ public class Paciente {
     private String nombre;
     private String domicilio;
     private int celular;
-    private double pesoActual;
-    private double pesoDeseado;
     private boolean estado;
 
     public Paciente() {
@@ -23,26 +21,22 @@ public class Paciente {
         this.celular = celular;
     }
 
-    public Paciente(int dni, String apellido, String nombre, String domicilio, int celular, double pesoActual, double pesoDeseado, boolean estado) {
+    public Paciente(int dni, String apellido, String nombre, String domicilio, int celular, boolean estado) {
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.celular = celular;
-        this.pesoActual = pesoActual;
-        this.pesoDeseado = pesoDeseado;
         this.estado = estado;
     }
 
-    public Paciente(int idPaciente, int dni, String apellido, String nombre, String domicilio, int celular, double pesoActual, double pesoDeseado, boolean estado) {
+    public Paciente(int idPaciente, int dni, String apellido, String nombre, String domicilio, int celular, boolean estado) {
         this.idPaciente = idPaciente;
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.celular = celular;
-        this.pesoActual = pesoActual;
-        this.pesoDeseado = pesoDeseado;
         this.estado = estado;
     }
 
@@ -94,22 +88,6 @@ public class Paciente {
         this.celular = celular;
     }
 
-    public double getPesoActual() {
-        return pesoActual;
-    }
-
-    public void setPesoActual(double pesoActual) {
-        this.pesoActual = pesoActual;
-    }
-
-    public double getPesoDeseado() {
-        return pesoDeseado;
-    }
-
-    public void setPesoDeseado(double pesoDeseado) {
-        this.pesoDeseado = pesoDeseado;
-    }
-
     public boolean isEstado() {
         return estado;
     }
@@ -120,7 +98,7 @@ public class Paciente {
 
     @Override
     public String toString() {
-        return "Paciente{" + "idPaciente=" + idPaciente + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", domicilio=" + domicilio + ", celular=" + celular + ", pesoActual=" + pesoActual + ", pesoDeseado=" + pesoDeseado + ", estado=" + estado + '}';
+        return "Paciente{" + "idPaciente=" + idPaciente + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", domicilio=" + domicilio + ", celular=" + celular + ", estado=" + estado + '}';
     }
 
     
