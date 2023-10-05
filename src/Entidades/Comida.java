@@ -5,10 +5,10 @@ public class Comida {
     private int idComida;
     private String nombre;
     private String detalle;
-    private double cantCalorias;
+    private int cantCalorias;
     private boolean estado;
 
-    public Comida(int idComida, String nombre, String detalle, double cantCalorias, boolean estado) {
+    public Comida(int idComida, String nombre, String detalle, int cantCalorias, boolean estado) {
         this.idComida = idComida;
         this.nombre = nombre;
         this.detalle = detalle;
@@ -16,7 +16,7 @@ public class Comida {
         this.estado = estado;
     }
 
-    public Comida(String nombre, String detalle, double cantCalorias, boolean estado) {
+    public Comida(String nombre, String detalle, int cantCalorias, boolean estado) {
         this.nombre = nombre;
         this.detalle = detalle;
         this.cantCalorias = cantCalorias;
@@ -48,7 +48,7 @@ public class Comida {
         this.detalle = detalle;
     }
 
-    public double getCantCalorias() {
+    public int getCantCalorias() {
         return cantCalorias;
     }
 

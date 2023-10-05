@@ -68,5 +68,31 @@ public class Comida_Data {
             JOptionPane.showMessageDialog(null, "Error al acceder a comida" + ex.getMessage());
         }
     }
+
+    public Comida buscarComida(int idComida) {
+    String sql = "SELECT idComida, nombre, detalle, cantCalorias, estado FROM comida WHERE idComida = ?";
+    Comida comida = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idComida);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                comida = new Comida();
+                comida.setIdComida(idComida);
+                comida.setNombre(rs.getString("nombre"));
+                comida.setDetalle(rs.getString("detalle"));
+                comida.setCantCalorias(rs.getInt("cantCalorias"));
+                comida.setEstado(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe el Menú");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder al Menú" + ex.getMessage());
+        }
+        return comida;
+    
+}
+       
 }
 

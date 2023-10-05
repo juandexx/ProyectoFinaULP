@@ -1,4 +1,3 @@
-
 package Views;
 
 import AccesoDB.Comida_Data;
@@ -6,14 +5,14 @@ import Entidades.Comida;
 import javax.swing.JOptionPane;
 
 public class Gestor_Comida extends javax.swing.JInternalFrame {
-private Comida_Data cdb;
-   
+
+    private Comida_Data cdb;
+
     public Gestor_Comida(Comida_Data cdb) {
         initComponents();
         this.cdb = cdb;
     }
 
-  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -29,10 +28,10 @@ private Comida_Data cdb;
         jLabel5 = new javax.swing.JLabel();
         TFcalorias = new javax.swing.JTextField();
         RBestado = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        Bbuscar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        Bmodificar = new javax.swing.JButton();
+        Beliminar = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         Bnuevo = new javax.swing.JButton();
 
@@ -52,7 +51,12 @@ private Comida_Data cdb;
 
         RBestado.setText("Estado");
 
-        jButton1.setText("Buscar");
+        Bbuscar.setText("Buscar");
+        Bbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BbuscarActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Agregar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -61,14 +65,19 @@ private Comida_Data cdb;
             }
         });
 
-        jButton4.setText("Modificar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        Bmodificar.setText("Modificar");
+        Bmodificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                BmodificarActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Eliminar");
+        Beliminar.setText("Eliminar");
+        Beliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BeliminarActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Salir");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +124,7 @@ private Comida_Data cdb;
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(Bnuevo)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jButton1))
+                                    .addComponent(Bbuscar))
                                 .addComponent(jLabel4)))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGap(31, 31, 31)
@@ -123,9 +132,9 @@ private Comida_Data cdb;
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(71, 71, 71)
-                                    .addComponent(jButton4)
+                                    .addComponent(Bmodificar)
                                     .addGap(57, 57, 57)
-                                    .addComponent(jButton3))
+                                    .addComponent(Beliminar))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addGap(84, 84, 84)
                                     .addComponent(jButton5))))))
@@ -155,7 +164,7 @@ private Comida_Data cdb;
                     .addComponent(jLabel5)
                     .addComponent(TFcalorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(RBestado)
-                    .addComponent(jButton1)
+                    .addComponent(Bbuscar)
                     .addComponent(Bnuevo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
@@ -163,9 +172,9 @@ private Comida_Data cdb;
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
+                    .addComponent(Bmodificar)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(Beliminar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton5)
                 .addContainerGap())
@@ -174,25 +183,25 @@ private Comida_Data cdb;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void BmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BmodificarActionPerformed
+
+    }//GEN-LAST:event_BmodificarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      try{
-      String nombre = TFnombre.getText();
-      double cantCalorias = Double.parseDouble(TFcalorias.getText());
-      String detalle = TAdescripcion.getText();
-      boolean estado = RBestado.isSelected();
-      Comida nuevo = new Comida(nombre, detalle, cantCalorias, estado);
-      cdb.agregarComida(nuevo);
-      }catch (NumberFormatException e){
-          JOptionPane.showMessageDialog(null, "Ha ingresado un parametro invalido, reintente");
-      }      
+        try {
+            String nombre = TFnombre.getText();
+            int cantCalorias = Integer.parseInt(TFcalorias.getText());
+            String detalle = TAdescripcion.getText();
+            boolean estado = RBestado.isSelected();
+            Comida nuevo = new Comida(nombre, detalle, cantCalorias, estado);
+            cdb.agregarComida(nuevo);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Ha ingresado un parametro invalido, reintente");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void BnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BnuevoActionPerformed
@@ -200,22 +209,35 @@ private Comida_Data cdb;
         TFcalorias.setText(" ");
         TAdescripcion.setText(" ");
         RBestado.isEnabled();
-        
-
     }//GEN-LAST:event_BnuevoActionPerformed
+
+    private void BeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BeliminarActionPerformed
+        int idComida = Integer.parseInt(TFid.getText());
+        cdb.eliminarComida(idComida);
+    }//GEN-LAST:event_BeliminarActionPerformed
+
+    private void BbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbuscarActionPerformed
+        int idComida = Integer.parseInt(TFid.getText());
+        Comida comida = cdb.buscarComida(idComida);
+        
+        TFnombre.setText(comida.getNombre());
+        TFcalorias.setText(String.valueOf(comida.getCantCalorias()));
+        TAdescripcion.setText(comida.getDetalle());
+        RBestado.setSelected(comida.isEstado());
+    }//GEN-LAST:event_BbuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Bbuscar;
+    private javax.swing.JButton Beliminar;
+    private javax.swing.JButton Bmodificar;
     private javax.swing.JButton Bnuevo;
     private javax.swing.JRadioButton RBestado;
     private javax.swing.JTextArea TAdescripcion;
     private javax.swing.JTextField TFcalorias;
     private javax.swing.JTextField TFid;
     private javax.swing.JTextField TFnombre;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
