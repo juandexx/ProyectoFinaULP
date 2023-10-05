@@ -1,5 +1,6 @@
 package Views;
 
+import AccesoDB.Comida_Data;
 import AccesoDB.Coneccion_Data;
 import AccesoDB.Paciente_Data;
 import Entidades.Paciente;
@@ -9,10 +10,12 @@ public class Nutricionista_App extends javax.swing.JFrame {
     private Coneccion_Data con;
     private Paciente_Data pdb;
     private Paciente pac;
+    private Comida_Data cdb;
 
     public Nutricionista_App() {
         initComponents();
         pdb = new Paciente_Data();
+        cdb = new Comida_Data ();
     }
 
     @SuppressWarnings("unchecked")
@@ -23,7 +26,8 @@ public class Nutricionista_App extends javax.swing.JFrame {
         SoyUnMenu = new javax.swing.JMenuBar();
         JMpaciente = new javax.swing.JMenu();
         infoPaciente = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        JMmenú = new javax.swing.JMenu();
+        infoMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,8 +56,17 @@ public class Nutricionista_App extends javax.swing.JFrame {
 
         SoyUnMenu.add(JMpaciente);
 
-        jMenu2.setText("Edit");
-        SoyUnMenu.add(jMenu2);
+        JMmenú.setText("Menú");
+
+        infoMenu.setText("Menú Info");
+        infoMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                infoMenuActionPerformed(evt);
+            }
+        });
+        JMmenú.add(infoMenu);
+
+        SoyUnMenu.add(JMmenú);
 
         setJMenuBar(SoyUnMenu);
 
@@ -80,15 +93,17 @@ public class Nutricionista_App extends javax.swing.JFrame {
         DesktopMain.moveToFront(pd);
     }//GEN-LAST:event_infoPacienteActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void infoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoMenuActionPerformed
+       DesktopMain.removeAll();
+        DesktopMain.repaint();
+        Gestor_Comida cd = new Gestor_Comida(cdb);
+        cd.setVisible(true);
+        DesktopMain.add(cd);
+        DesktopMain.moveToFront(cd);
+    }//GEN-LAST:event_infoMenuActionPerformed
+
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -107,7 +122,7 @@ public class Nutricionista_App extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+    
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Nutricionista_App().setVisible(true);
@@ -117,9 +132,10 @@ public class Nutricionista_App extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane DesktopMain;
+    private javax.swing.JMenu JMmenú;
     private javax.swing.JMenu JMpaciente;
     private javax.swing.JMenuBar SoyUnMenu;
+    private javax.swing.JMenuItem infoMenu;
     private javax.swing.JMenuItem infoPaciente;
-    private javax.swing.JMenu jMenu2;
     // End of variables declaration//GEN-END:variables
 }

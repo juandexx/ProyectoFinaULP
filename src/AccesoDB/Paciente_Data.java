@@ -19,7 +19,7 @@ public class Paciente_Data {
     }
 
     public void agregarPaciente(Paciente paciente) {
-        String sql = "INSERT INTO paciente (dni, apellido, nombre, domicilio, celular, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO paciente (dni, apellido, nombre, domicilio, celular, estado) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, paciente.getDni());
@@ -27,7 +27,7 @@ public class Paciente_Data {
             ps.setString(3, paciente.getNombre());
             ps.setString(4, paciente.getDomicilio());
             ps.setInt(5, paciente.getCelular());
-            ps.setBoolean(8, paciente.isEstado());
+            ps.setBoolean(6, paciente.isEstado());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
@@ -66,7 +66,7 @@ public class Paciente_Data {
             ps.setString(3, paciente.getApellido());
             ps.setString(4, paciente.getDomicilio());
             ps.setInt(5, paciente.getCelular());
-            ps.setBoolean(8, paciente.isEstado());
+            ps.setBoolean(6, paciente.isEstado());
             int exito = ps.executeUpdate();
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
