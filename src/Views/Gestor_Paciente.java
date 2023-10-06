@@ -1,20 +1,17 @@
-
 package Views;
 
 import AccesoDB.Paciente_Data;
 import Entidades.Paciente;
 import javax.swing.JOptionPane;
 
-
 public class Gestor_Paciente extends javax.swing.JInternalFrame {
-    private Paciente_Data pdb;
 
+    private Paciente_Data pdb;
 
     public Gestor_Paciente(Paciente_Data pdb) {
         initComponents();
         this.pdb = pdb;
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -36,6 +33,8 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
         TFcelular = new javax.swing.JTextField();
         RBestado = new javax.swing.JRadioButton();
         Bactualizar = new javax.swing.JButton();
+        TFedad = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
 
         jLabel1.setText("PACIENTE");
 
@@ -79,6 +78,8 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel7.setText("Edad");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,14 +91,20 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(TFdomicilio))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(TFnombre)))
+                                        .addComponent(TFnombre))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel7))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(TFedad))
+                                            .addComponent(TFdomicilio))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -155,7 +162,11 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
                     .addComponent(jLabel5)
                     .addComponent(TFdomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TFcelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TFedad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Bagregar)
                     .addComponent(Bactualizar))
@@ -168,44 +179,74 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BagregarActionPerformed
-      try{
-      int dni = Integer.parseInt(TFdni.getText());
-      String apellido = TFapellido.getText();
-      String nombre = TFnombre.getText();
-      String domicilio = TFdomicilio.getText();
-      int celular = Integer.parseInt(TFcelular.getText());
-      boolean estado = RBestado.isSelected();
-      Paciente nuevo = new Paciente(dni, apellido, nombre, domicilio, celular, estado);
-      pdb.agregarPaciente(nuevo);
-      }catch (NumberFormatException e){
-          JOptionPane.showMessageDialog(null, "Ha ingresado un parametro invalido, reintente");
-      }      
+        try {
+            int dni = Integer.parseInt(TFdni.getText());
+            String apellido = TFapellido.getText();
+            String nombre = TFnombre.getText();
+            int edad = Integer.parseInt(TFedad.getText());
+            String domicilio = TFdomicilio.getText();
+            int celular = Integer.parseInt(TFcelular.getText());
+            boolean estado = RBestado.isSelected();
+            if (validarNombre(nombre)) {
+                if (validarNombre(apellido)) {
+                    Paciente nuevo = new Paciente(dni, apellido, nombre, edad, domicilio, celular, estado);
+                    pdb.agregarPaciente(nuevo);
+                    limpiarCampos();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Apellido inválido");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Nombre inválido");
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Ha ingresado un parámetro invalido, reintente");
+        }
     }//GEN-LAST:event_BagregarActionPerformed
 
     private void BeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BeliminarActionPerformed
         int dni = Integer.parseInt(TFdni.getText());
         pdb.eliminarPaciente(dni);
+        limpiarCampos();
     }//GEN-LAST:event_BeliminarActionPerformed
 
     private void BactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BactualizarActionPerformed
-      int dni = Integer.parseInt(TFdni.getText());
-      String apellido = TFapellido.getText();
-      String nombre = TFnombre.getText();
-      String domicilio = TFdomicilio.getText();
-      int celular = Integer.parseInt(TFcelular.getText());
-      boolean estado = RBestado.isSelected();  
-      Paciente existente = new Paciente(dni, apellido, nombre, domicilio, celular, estado);
-      pdb.modificarPaciente(existente);
+        try {
+            int dni = Integer.parseInt(TFdni.getText());
+            String apellido = TFapellido.getText();
+            String nombre = TFnombre.getText();
+            int edad = Integer.parseInt(TFedad.getText());
+            String domicilio = TFdomicilio.getText();
+            int celular = Integer.parseInt(TFcelular.getText());
+            boolean estado = RBestado.isSelected();
+            if (validarNombre(nombre)) {
+                if (validarNombre(apellido)) {
+                    Paciente nuevo = new Paciente(dni, apellido, nombre, edad, domicilio, celular, estado);
+                    pdb.modificarPaciente(nuevo);
+                    limpiarCampos();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Apellido inválido");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Nombre inválido");
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Ha ingresado un parametro invalido, reintente");
+        }
     }//GEN-LAST:event_BactualizarActionPerformed
 
     private void BbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbuscarActionPerformed
-        int dni = Integer.parseInt(TFdni.getText());
-        Paciente paciente = pdb.buscarPaciente(dni);
-        TFapellido.setText(paciente.getApellido());
-        TFnombre.setText(paciente.getNombre());
-        TFdomicilio.setText(paciente.getDomicilio());
-        TFcelular.setText(String.valueOf(paciente.getCelular()));
-        
+        try {
+            int dni = Integer.parseInt(TFdni.getText());
+            Paciente paciente = pdb.buscarPaciente(dni);
+            TFapellido.setText(paciente.getApellido());
+            TFnombre.setText(paciente.getNombre());
+            TFdomicilio.setText(paciente.getDomicilio());
+            TFcelular.setText(String.valueOf(paciente.getCelular()));
+            TFedad.setText(String.valueOf(paciente.getEdad()));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Ingrese Dni de paciente");
+        } catch (NullPointerException e) {
+        }
     }//GEN-LAST:event_BbuscarActionPerformed
 
 
@@ -219,6 +260,7 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField TFcelular;
     private javax.swing.JTextField TFdni;
     private javax.swing.JTextField TFdomicilio;
+    private javax.swing.JTextField TFedad;
     private javax.swing.JTextField TFnombre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -226,5 +268,20 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
+
+    private void limpiarCampos() {
+        TFdni.setText(" ");
+        TFapellido.setText(" ");
+        TFnombre.setText(" ");
+        TFdomicilio.setText(" ");
+        TFedad.setText(" ");
+        TFcelular.setText(" ");
+        RBestado.setSelected(false);
+    }
+
+    private boolean validarNombre(String nombre) {
+        return nombre.matches("[a-zA-Z ]+");
+    }
 }

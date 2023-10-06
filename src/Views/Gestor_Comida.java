@@ -219,7 +219,7 @@ public class Gestor_Comida extends javax.swing.JInternalFrame {
     private void BbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbuscarActionPerformed
         int idComida = Integer.parseInt(TFid.getText());
         Comida comida = cdb.buscarComida(idComida);
-        
+
         TFnombre.setText(comida.getNombre());
         TFcalorias.setText(String.valueOf(comida.getCantCalorias()));
         TAdescripcion.setText(comida.getDetalle());

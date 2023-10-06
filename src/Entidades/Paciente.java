@@ -6,6 +6,7 @@ public class Paciente {
     private int dni;
     private String apellido;
     private String nombre;
+    private int edad;
     private String domicilio;
     private int celular;
     private boolean estado;
@@ -13,32 +14,28 @@ public class Paciente {
     public Paciente() {
     }
 
-    public Paciente(int dni, String apellido, String nombre, String domicilio, int celular) {
-        this.dni = dni;
-        this.apellido = apellido;
-        this.nombre = nombre;
-        this.domicilio = domicilio;
-        this.celular = celular;
-    }
-
-    public Paciente(int dni, String apellido, String nombre, String domicilio, int celular, boolean estado) {
-        this.dni = dni;
-        this.apellido = apellido;
-        this.nombre = nombre;
-        this.domicilio = domicilio;
-        this.celular = celular;
-        this.estado = estado;
-    }
-
-    public Paciente(int idPaciente, int dni, String apellido, String nombre, String domicilio, int celular, boolean estado) {
+    public Paciente(int idPaciente, int dni, String apellido, String nombre, int edad, String domicilio, int celular, boolean estado) {
         this.idPaciente = idPaciente;
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
+        this.edad = edad;
         this.domicilio = domicilio;
         this.celular = celular;
         this.estado = estado;
     }
+
+    public Paciente(int dni, String apellido, String nombre, int edad, String domicilio, int celular, boolean estado) {
+        this.dni = dni;
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.edad = edad;
+        this.domicilio = domicilio;
+        this.celular = celular;
+        this.estado = estado;
+    }
+
+    
 
     public int getIdPaciente() {
         return idPaciente;
@@ -70,6 +67,14 @@ public class Paciente {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
     public String getDomicilio() {
