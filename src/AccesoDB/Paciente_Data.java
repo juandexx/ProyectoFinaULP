@@ -57,19 +57,20 @@ public class Paciente_Data {
     }
 
     public void modificarPaciente(Paciente paciente) {
-        String sql = "UPDATE paciente SET nombre = ?, apellido = ?, dni = ?, edad = ?, domicilio = ?, celular = ?, estado = ? WHERE dni = ?";
+        String sql = "UPDATE paciente SET nombre = ?, apellido = ?, dni = ?, edad = ?, domicilio = ?, celular = ?, estado = ? WHERE idPaciente = ?";
         PreparedStatement ps = null;
 
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, paciente.getIdPaciente());
-            ps.setInt(2, paciente.getDni());
-            ps.setString(3, paciente.getNombre());
-            ps.setString(4, paciente.getApellido());
+            ps.setString(2, paciente.getNombre());
+            ps.setString(3, paciente.getApellido());
+            ps.setInt(4, paciente.getDni());
             ps.setInt(5, paciente.getEdad());
             ps.setString(6, paciente.getDomicilio());
             ps.setInt(7, paciente.getCelular());
             ps.setBoolean(8, paciente.isEstado());
+            
             int exito = ps.executeUpdate();
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
@@ -106,7 +107,7 @@ public class Paciente_Data {
         }
         return paciente;
     }
-/*
+    /*
     public List<Paciente> listarPacientesActivos() {
         ArrayList<Paciente> pacientes = new ArrayList<>();
         try {
@@ -154,6 +155,6 @@ public class Paciente_Data {
         }
         return pacientes;
     }
-    */
-    
+     */
+
 }

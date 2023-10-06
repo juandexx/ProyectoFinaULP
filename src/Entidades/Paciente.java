@@ -3,9 +3,9 @@ package Entidades;
 public class Paciente {
 
     private int idPaciente;
-    private int dni;
-    private String apellido;
     private String nombre;
+    private String apellido;
+    private int dni;
     private int edad;
     private String domicilio;
     private int celular;
@@ -14,28 +14,26 @@ public class Paciente {
     public Paciente() {
     }
 
-    public Paciente(int idPaciente, int dni, String apellido, String nombre, int edad, String domicilio, int celular, boolean estado) {
+    public Paciente(int idPaciente, String nombre, String apellido, int dni, int edad, String domicilio, int celular, boolean estado) {
         this.idPaciente = idPaciente;
-        this.dni = dni;
-        this.apellido = apellido;
         this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
         this.edad = edad;
         this.domicilio = domicilio;
         this.celular = celular;
         this.estado = estado;
     }
 
-    public Paciente(int dni, String apellido, String nombre, int edad, String domicilio, int celular, boolean estado) {
-        this.dni = dni;
-        this.apellido = apellido;
+    public Paciente(String nombre, String apellido, int dni, int edad, String domicilio, int celular, boolean estado) {
         this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
         this.edad = edad;
         this.domicilio = domicilio;
         this.celular = celular;
         this.estado = estado;
     }
-
-    
 
     public int getIdPaciente() {
         return idPaciente;
@@ -103,9 +101,9 @@ public class Paciente {
 
     @Override
     public String toString() {
-        return "Paciente{" + "idPaciente=" + idPaciente + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", domicilio=" + domicilio + ", celular=" + celular + ", estado=" + estado + '}';
+        return "Paciente{" + "idPaciente=" + idPaciente + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", edad=" + edad + ", domicilio=" + domicilio + ", celular=" + celular + ", estado=" + estado + '}';
     }
 
-    
+  
 
 }
