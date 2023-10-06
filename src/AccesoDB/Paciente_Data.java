@@ -58,7 +58,7 @@ public class Paciente_Data {
 
     public void modificarPaciente(Paciente paciente) {
         String sql = "UPDATE paciente SET nombre = ?, apellido = ?, dni = ?, edad = ?, domicilio = ?, celular = ?, estado = ? WHERE idPaciente = ?";
-        PreparedStatement ps = null;
+        PreparedStatement ps = null; 
 
         try {
             ps = con.prepareStatement(sql);
