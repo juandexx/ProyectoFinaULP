@@ -15,7 +15,7 @@ public class Nutricionista_App extends javax.swing.JFrame {
     public Nutricionista_App() {
         initComponents();
         pdb = new Paciente_Data();
-        cdb = new Comida_Data ();
+        cdb = new Comida_Data();
     }
 
     @SuppressWarnings("unchecked")
@@ -94,7 +94,7 @@ public class Nutricionista_App extends javax.swing.JFrame {
     }//GEN-LAST:event_infoPacienteActionPerformed
 
     private void infoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoMenuActionPerformed
-       DesktopMain.removeAll();
+        DesktopMain.removeAll();
         DesktopMain.repaint();
         Gestor_Comida cd = new Gestor_Comida(cdb);
         cd.setVisible(true);
@@ -103,7 +103,7 @@ public class Nutricionista_App extends javax.swing.JFrame {
     }//GEN-LAST:event_infoMenuActionPerformed
 
     public static void main(String args[]) {
-    
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -122,7 +122,6 @@ public class Nutricionista_App extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-    
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Nutricionista_App().setVisible(true);

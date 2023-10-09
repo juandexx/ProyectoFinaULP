@@ -58,19 +58,17 @@ public class Paciente_Data {
 
     public void modificarPaciente(Paciente paciente) {
         String sql = "UPDATE paciente SET nombre = ?, apellido = ?, dni = ?, edad = ?, domicilio = ?, celular = ?, estado = ? WHERE idPaciente = ?";
-        PreparedStatement ps = null; 
-
+        PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, paciente.getIdPaciente());
-            ps.setString(2, paciente.getNombre());
-            ps.setString(3, paciente.getApellido());
-            ps.setInt(4, paciente.getDni());
-            ps.setInt(5, paciente.getEdad());
-            ps.setString(6, paciente.getDomicilio());
-            ps.setInt(7, paciente.getCelular());
-            ps.setBoolean(8, paciente.isEstado());
-            
+            ps.setString(1, paciente.getNombre());
+            ps.setString(2, paciente.getApellido());
+            ps.setInt(3, paciente.getDni());
+            ps.setInt(4, paciente.getEdad());
+            ps.setString(5, paciente.getDomicilio());
+            ps.setInt(6, paciente.getCelular());
+            ps.setBoolean(7, paciente.isEstado());
+            ps.setInt(8, paciente.getIdPaciente());
             int exito = ps.executeUpdate();
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
@@ -83,7 +81,7 @@ public class Paciente_Data {
     }
 
     public Paciente buscarPaciente(int dni) {
-        String sql = "SELECT dni,  apellido, nombre, edad, domicilio, celular, estado FROM paciente WHERE dni = ?";
+        String sql = "SELECT idPaciente, dni,  apellido, nombre, edad, domicilio, celular, estado FROM paciente WHERE dni = ?";
         Paciente paciente = null;
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -91,6 +89,7 @@ public class Paciente_Data {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 paciente = new Paciente();
+                paciente.setIdPaciente(rs.getInt("idPaciente"));
                 paciente.setDni(rs.getInt("dni"));
                 paciente.setApellido(rs.getString("apellido"));
                 paciente.setNombre(rs.getString("nombre"));
@@ -135,7 +134,7 @@ public class Paciente_Data {
     public List<Paciente> listarPacientesNoActivos() {
         ArrayList<Paciente> pacientes = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM alumno WHERE estado = 1 ";
+            String sql = "SELECT * FROM alumno WHERE estado = 0 ";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
