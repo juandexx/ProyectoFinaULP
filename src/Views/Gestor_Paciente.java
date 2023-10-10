@@ -38,6 +38,8 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         TFid = new javax.swing.JTextField();
         Blimpiar = new javax.swing.JButton();
+        TFpeso = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
 
         jLabel1.setText("PACIENTE");
 
@@ -105,6 +107,8 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel9.setText("PesoActual");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,20 +149,27 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
                                         .addComponent(jLabel6)))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TFapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel5)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGap(50, 50, 50)
                                                 .addComponent(jLabel8)
-                                                .addGap(23, 23, 23)))
+                                                .addGap(23, 23, 23))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(RBestado)
+                                                        .addComponent(jLabel5))
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(jLabel9)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(TFcelular, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(TFid, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(23, 23, 23))
-                                    .addComponent(RBestado)
-                                    .addComponent(TFapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(TFid, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(TFpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(23, 23, 23))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Bactualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -191,7 +202,8 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Bagregar)
-                            .addComponent(Bbuscar))
+                            .addComponent(Bbuscar)
+                            .addComponent(RBestado))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -205,7 +217,9 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
                             .addComponent(TFid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(RBestado)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(TFpeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Beliminar)
@@ -225,11 +239,12 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
             String nombre = TFnombre.getText();
             int edad = Integer.parseInt(TFedad.getText());
             String domicilio = TFdomicilio.getText();
+            double pesoActual = Double.valueOf(TFpeso.getText());
             int celular = Integer.parseInt(TFcelular.getText());
             boolean estado = RBestado.isSelected();
             if (validarNombre(nombre)) {
                 if (validarNombre(apellido)) {
-                    Paciente nuevo = new Paciente(nombre, apellido, dni, edad, domicilio, celular, estado);
+                    Paciente nuevo = new Paciente(nombre, apellido, dni, pesoActual, edad, domicilio, celular, estado);
                     pdb.agregarPaciente(nuevo);
                     limpiarCampos();
                 } else {
@@ -257,10 +272,10 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
             String nombre = TFnombre.getText();
             int edad = Integer.parseInt(TFedad.getText());
             String domicilio = TFdomicilio.getText();
+            double pesoActual = Double.valueOf(TFpeso.getText());
             int celular = Integer.parseInt(TFcelular.getText());
             boolean estado = RBestado.isSelected();
-
-            Paciente nuevo = new Paciente(idPaciente, nombre, apellido, dni, edad, domicilio, celular, estado);
+            Paciente nuevo = new Paciente(idPaciente, nombre, apellido, dni, pesoActual, edad, domicilio, celular, estado);
             pdb.modificarPaciente(nuevo);
             limpiarCampos();
         } catch (NumberFormatException e) {
@@ -275,9 +290,11 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
             TFapellido.setText(paciente.getApellido());
             TFnombre.setText(paciente.getNombre());
             TFdomicilio.setText(paciente.getDomicilio());
+            TFpeso.setText(String.valueOf(paciente.getPesoActual()));
             TFcelular.setText(String.valueOf(paciente.getCelular()));
             TFedad.setText(String.valueOf(paciente.getEdad()));
             TFid.setText(String.valueOf(paciente.getIdPaciente()));
+            RBestado.isContentAreaFilled();
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Ingrese Dni de paciente");
         } catch (NullPointerException e) {
@@ -311,6 +328,7 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField TFedad;
     private javax.swing.JTextField TFid;
     private javax.swing.JTextField TFnombre;
+    private javax.swing.JTextField TFpeso;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -319,6 +337,7 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 
     private void limpiarCampos() {
@@ -330,6 +349,7 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
         TFcelular.setText(" ");
         RBestado.setSelected(false);
         TFid.setText(" ");
+        TFpeso.setText(" ");
     }
 
     private boolean validarNombre(String nombre) {

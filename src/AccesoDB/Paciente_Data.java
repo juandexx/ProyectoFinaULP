@@ -6,8 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
 
 public class Paciente_Data {
@@ -19,16 +17,19 @@ public class Paciente_Data {
     }
 
     public void agregarPaciente(Paciente paciente) {
-        String sql = "INSERT INTO paciente (dni, apellido, nombre, edad, domicilio, celular, estado) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO paciente (nombre, apellido, dni, edad, pesoActual, domicilio, celular, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, paciente.getDni());
+           
+            
+            ps.setString(1, paciente.getNombre());
             ps.setString(2, paciente.getApellido());
-            ps.setString(3, paciente.getNombre());
+             ps.setInt(3, paciente.getDni());
             ps.setInt(4, paciente.getEdad());
-            ps.setString(5, paciente.getDomicilio());
-            ps.setInt(6, paciente.getCelular());
-            ps.setBoolean(7, paciente.isEstado());
+            ps.setDouble(5, paciente.getPesoActual());
+            ps.setString(6, paciente.getDomicilio());
+            ps.setInt(7, paciente.getCelular());
+            ps.setBoolean(8, paciente.isEstado());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {

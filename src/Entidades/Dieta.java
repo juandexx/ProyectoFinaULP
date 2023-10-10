@@ -1,20 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Entidades;
 
 import java.time.LocalDate;
 
-
 public class Dieta {
+
+    private int idDieta;
     private Paciente paciente;
     private Comida comida;
     private LocalDate fechaInicial;
     private LocalDate fechaFinal;
     private double pesoInicial;
     private double pesoBuscado;
+
+    public int getIdDieta() {
+        return idDieta;
+    }
+
+    public void setIdDieta(int idDieta) {
+        this.idDieta = idDieta;
+    }
 
     public Paciente getPaciente() {
         return paciente;
@@ -67,7 +72,8 @@ public class Dieta {
     public Dieta() {
     }
 
-    public Dieta(Paciente paciente, Comida comida, LocalDate fechaInicial, LocalDate fechaFinal, double pesoInicial, double pesoBuscado) {
+    public Dieta(int idDieta, Paciente paciente, Comida comida, LocalDate fechaInicial, LocalDate fechaFinal, double pesoInicial, double pesoBuscado) {
+        this.idDieta = idDieta;
         this.paciente = paciente;
         this.comida = comida;
         this.fechaInicial = fechaInicial;
@@ -75,10 +81,4 @@ public class Dieta {
         this.pesoInicial = pesoInicial;
         this.pesoBuscado = pesoBuscado;
     }
-
-    public void setIddieta(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
 }

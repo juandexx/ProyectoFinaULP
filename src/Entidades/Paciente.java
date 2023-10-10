@@ -6,33 +6,36 @@ public class Paciente {
     private String nombre;
     private String apellido;
     private int dni;
+    private double pesoActual;
     private int edad;
     private String domicilio;
     private int celular;
     private boolean estado;
 
-    public Paciente() {
-    }
-
-    public Paciente(int idPaciente, String nombre, String apellido, int dni, int edad, String domicilio, int celular, boolean estado) {
+    public Paciente(int idPaciente, String nombre, String apellido, int dni, double pesoActual, int edad, String domicilio, int celular, boolean estado) {
         this.idPaciente = idPaciente;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
+        this.pesoActual = pesoActual;
         this.edad = edad;
         this.domicilio = domicilio;
         this.celular = celular;
         this.estado = estado;
     }
 
-    public Paciente(String nombre, String apellido, int dni, int edad, String domicilio, int celular, boolean estado) {
+    public Paciente(String nombre, String apellido, int dni, double pesoActual, int edad, String domicilio, int celular, boolean estado) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
+        this.pesoActual = pesoActual;
         this.edad = edad;
         this.domicilio = domicilio;
         this.celular = celular;
         this.estado = estado;
+    }
+
+    public Paciente() {
     }
 
     public int getIdPaciente() {
@@ -43,12 +46,12 @@ public class Paciente {
         this.idPaciente = idPaciente;
     }
 
-    public int getDni() {
-        return dni;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setDni(int dni) {
-        this.dni = dni;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getApellido() {
@@ -59,12 +62,20 @@ public class Paciente {
         this.apellido = apellido;
     }
 
-    public String getNombre() {
-        return nombre;
+    public int getDni() {
+        return dni;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+
+    public double getPesoActual() {
+        return pesoActual;
+    }
+
+    public void setPesoActual(double pesoActual) {
+        this.pesoActual = pesoActual;
     }
 
     public int getEdad() {
@@ -101,9 +112,8 @@ public class Paciente {
 
     @Override
     public String toString() {
-        return "Paciente{" + "idPaciente=" + idPaciente + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", edad=" + edad + ", domicilio=" + domicilio + ", celular=" + celular + ", estado=" + estado + '}';
+        return "Paciente{" + "idPaciente=" + idPaciente + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", pesoActual=" + pesoActual + ", edad=" + edad + ", domicilio=" + domicilio + ", celular=" + celular + ", estado=" + estado + '}';
     }
 
-  
-
+   
 }
