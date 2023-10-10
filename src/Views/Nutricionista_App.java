@@ -11,7 +11,6 @@ public class Nutricionista_App extends javax.swing.JFrame {
     private Paciente_Data pdb;
     private Paciente pac;
     private Comida_Data cdb;
-
     public Nutricionista_App() {
         initComponents();
         pdb = new Paciente_Data();
@@ -164,7 +163,6 @@ public class Nutricionista_App extends javax.swing.JFrame {
     }//GEN-LAST:event_infoMenuActionPerformed
 
     public static void main(String args[]) {
-
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -182,7 +180,6 @@ public class Nutricionista_App extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Nutricionista_App.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Nutricionista_App().setVisible(true);
