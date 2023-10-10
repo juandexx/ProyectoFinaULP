@@ -20,11 +20,9 @@ public class Paciente_Data {
         String sql = "INSERT INTO paciente (nombre, apellido, dni, edad, pesoActual, domicilio, celular, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-           
-            
             ps.setString(1, paciente.getNombre());
             ps.setString(2, paciente.getApellido());
-             ps.setInt(3, paciente.getDni());
+            ps.setInt(3, paciente.getDni());
             ps.setInt(4, paciente.getEdad());
             ps.setDouble(5, paciente.getPesoActual());
             ps.setString(6, paciente.getDomicilio());
