@@ -2,6 +2,7 @@ package Views;
 
 import AccesoDB.Comida_Data;
 import AccesoDB.Coneccion_Data;
+import AccesoDB.Dieta_Data;
 import AccesoDB.Paciente_Data;
 import Entidades.Paciente;
 
@@ -11,10 +12,12 @@ public class Nutricionista_App extends javax.swing.JFrame {
     private Paciente_Data pdb;
     private Paciente pac;
     private Comida_Data cdb;
+    private Dieta_Data ddb;
     public Nutricionista_App() {
         initComponents();
         pdb = new Paciente_Data();
         cdb = new Comida_Data();
+        ddb = new Dieta_Data();
     }
 
     @SuppressWarnings("unchecked")
@@ -75,6 +78,11 @@ public class Nutricionista_App extends javax.swing.JFrame {
         jMenu1.setText("Dieta");
 
         jMenuItem5.setText("Dieta...");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem5);
 
         jMenuItem1.setText("Dieta Nueva");
@@ -161,6 +169,15 @@ public class Nutricionista_App extends javax.swing.JFrame {
         DesktopMain.add(cd);
         DesktopMain.moveToFront(cd);
     }//GEN-LAST:event_infoMenuActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+       DesktopMain.removeAll();
+        DesktopMain.repaint();
+        Gestor_Dieta gd = new Gestor_Dieta(ddb);
+        gd.setVisible(true);
+        DesktopMain.add(gd);
+        DesktopMain.moveToFront(gd);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     public static void main(String args[]) {
         try {
