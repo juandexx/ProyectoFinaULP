@@ -1,6 +1,6 @@
 package Entidades;
 
-public class Paciente {
+public class Paciente implements Comparable<Paciente> {
 
     private int idPaciente;
     private String nombre;
@@ -115,5 +115,15 @@ public class Paciente {
         return "Paciente{" + "idPaciente=" + idPaciente + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", pesoActual=" + pesoActual + ", edad=" + edad + ", domicilio=" + domicilio + ", celular=" + celular + ", estado=" + estado + '}';
     }
 
-   
+    @Override
+    public int compareTo(Paciente t) {
+        if (dni == t.dni) {
+            return 0;
+        } else if (dni > t.dni) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+
 }

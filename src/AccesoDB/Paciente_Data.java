@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class Paciente_Data {
@@ -105,8 +107,8 @@ public class Paciente_Data {
         }
         return paciente;
     }
-    /*
-    public List<Paciente> listarPacientesActivos() {
+
+    public List<Paciente> listarPacientes() {
         ArrayList<Paciente> pacientes = new ArrayList<>();
         try {
             String sql = "SELECT * FROM alumno WHERE estado = 1 ";
@@ -119,17 +121,18 @@ public class Paciente_Data {
                 paciente.setApellido(rs.getString("apellido"));
                 paciente.setNombre(rs.getString("nombre"));
                 paciente.setDomicilio(rs.getString("domicilio"));
+                paciente.setPesoActual(rs.getDouble("pesoActual"));
                 paciente.setCelular(rs.getInt("celular"));
                 paciente.setEstado(rs.getBoolean("estado"));
                 pacientes.add(paciente);
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Pacientes " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, " Error al acceder Pacientes " + ex.getMessage());
         }
         return pacientes;
     }
-    
+    /*
     public List<Paciente> listarPacientesNoActivos() {
         ArrayList<Paciente> pacientes = new ArrayList<>();
         try {
