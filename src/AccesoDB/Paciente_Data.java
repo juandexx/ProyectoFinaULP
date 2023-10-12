@@ -58,7 +58,7 @@ public class Paciente_Data {
     }
 
     public void modificarPaciente(Paciente paciente) {
-        String sql = "UPDATE paciente SET nombre = ?, apellido = ?, dni = ?, edad = ?, domicilio = ?, celular = ?, estado = ? WHERE idPaciente = ?";
+        String sql = "UPDATE paciente SET nombre = ?, apellido = ?, dni = ?, edad = ?, pesoActual = ?, domicilio = ?, celular = ?, estado = ? WHERE idPaciente = ?";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
@@ -66,10 +66,11 @@ public class Paciente_Data {
             ps.setString(2, paciente.getApellido());
             ps.setInt(3, paciente.getDni());
             ps.setInt(4, paciente.getEdad());
-            ps.setString(5, paciente.getDomicilio());
-            ps.setInt(6, paciente.getCelular());
-            ps.setBoolean(7, paciente.isEstado());
-            ps.setInt(8, paciente.getIdPaciente());
+            ps.setDouble(5, paciente.getPesoActual());
+            ps.setString(6, paciente.getDomicilio());
+            ps.setInt(7, paciente.getCelular());
+            ps.setBoolean(8, paciente.isEstado());
+            ps.setInt(9, paciente.getIdPaciente());
             int exito = ps.executeUpdate();
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
@@ -82,7 +83,7 @@ public class Paciente_Data {
     }
 
     public Paciente buscarPaciente(int dni) {
-        String sql = "SELECT idPaciente, dni,  apellido, nombre, edad, domicilio, celular, estado FROM paciente WHERE dni = ?";
+        String sql = "SELECT idPaciente, dni,  apellido, nombre, edad, pesoActual, domicilio, celular, estado FROM paciente WHERE dni = ?";
         Paciente paciente = null;
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -95,9 +96,10 @@ public class Paciente_Data {
                 paciente.setApellido(rs.getString("apellido"));
                 paciente.setNombre(rs.getString("nombre"));
                 paciente.setEdad(rs.getInt("edad"));
+                paciente.setPesoActual(rs.getDouble("pesoActual"));
                 paciente.setDomicilio(rs.getString("domicilio"));
                 paciente.setCelular(rs.getInt("celular"));
-                paciente.setEstado(true);
+                paciente.setEstado(rs.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el paciente");
             }

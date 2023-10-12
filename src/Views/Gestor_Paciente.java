@@ -195,7 +195,7 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(TFdomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(TFedad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
@@ -341,15 +341,15 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void limpiarCampos() {
-        TFdni.setText(" ");
-        TFapellido.setText(" ");
-        TFnombre.setText(" ");
-        TFdomicilio.setText(" ");
-        TFedad.setText(" ");
-        TFcelular.setText(" ");
+        TFdni.setText("");
+        TFapellido.setText("");
+        TFnombre.setText("");
+        TFdomicilio.setText("");
+        TFedad.setText("");
+        TFcelular.setText("");
         RBestado.setSelected(false);
-        TFid.setText(" ");
-        TFpeso.setText(" ");
+        TFid.setText("");
+        TFpeso.setText("");
     }
 
     private boolean validarNombre(String nombre) {
