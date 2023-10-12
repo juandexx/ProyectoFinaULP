@@ -2,6 +2,8 @@ package Views;
 
 import AccesoDB.Paciente_Data;
 import Entidades.Paciente;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 public class Gestor_Paciente extends javax.swing.JInternalFrame {
@@ -11,6 +13,13 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
     public Gestor_Paciente(Paciente_Data pdb) {
         initComponents();
         this.pdb = pdb;
+        agregarValidacionDNI();
+        setupNombreField();
+        setupApellidoField();
+        agregarValidacionCelular();
+        agregarValidacionEdad();
+        
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -355,4 +364,65 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
     private boolean validarNombre(String nombre) {
         return nombre.matches("[a-zA-Z ]+");
     }
+private void agregarValidacionDNI() {
+    TFdni.addKeyListener(new java.awt.event.KeyAdapter() {
+        @Override
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            char c = evt.getKeyChar();
+            if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+                evt.consume();
+                JOptionPane.showMessageDialog(null, "Ingrese solo números en el campo de DNI.");
+            }
+        }
+    });
+}
+private void setupNombreField() {
+    TFnombre.addKeyListener(new KeyAdapter() {
+        @Override
+        public void keyTyped(KeyEvent e) {
+            char c = e.getKeyChar();
+            if (!Character.isLetter(c) && c != ' ') {
+                e.consume(); // Consumir (ignorar) el evento de tecla no alfabética
+                JOptionPane.showMessageDialog(null, "Ingrese solo letras y espacios en el campo de Nombre.");
+            }
+        }
+    });
+}
+private void setupApellidoField() {
+    TFapellido.addKeyListener(new KeyAdapter() {
+        @Override
+        public void keyTyped(KeyEvent e) {
+            char c = e.getKeyChar();
+            if (!Character.isLetter(c) && c != ' ') {
+                e.consume(); // Consumir (ignorar) el evento de tecla no alfabética
+                JOptionPane.showMessageDialog(null, "Ingrese solo letras y espacios en el campo de Apellido.");
+            }
+        }
+    });
+}
+private void agregarValidacionCelular() {
+    TFcelular.addKeyListener(new java.awt.event.KeyAdapter() {
+        @Override
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            char c = evt.getKeyChar();
+            if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+                evt.consume();
+                JOptionPane.showMessageDialog(null, "Ingrese solo números en el campo de Celular.");
+            }
+        }
+    });
+}
+private void agregarValidacionEdad() {
+    TFedad.addKeyListener(new java.awt.event.KeyAdapter() {
+        @Override
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            char c = evt.getKeyChar();
+            if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+                evt.consume();
+                JOptionPane.showMessageDialog(null, "Ingrese solo números en el campo de Edad.");
+            }
+        }
+    });
+}
+
 }
