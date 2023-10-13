@@ -56,11 +56,11 @@ public class Nutricionista_App extends javax.swing.JFrame {
         DesktopMain.setLayout(DesktopMainLayout);
         DesktopMainLayout.setHorizontalGroup(
             DesktopMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 650, Short.MAX_VALUE)
         );
         DesktopMainLayout.setVerticalGroup(
             DesktopMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 265, Short.MAX_VALUE)
+            .addGap(0, 427, Short.MAX_VALUE)
         );
 
         JMpaciente.setText("Paciente");
