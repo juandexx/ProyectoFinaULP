@@ -45,12 +45,13 @@ public class Comida_Data {
                 JOptionPane.showMessageDialog(null, "Comida borrada correctamente");
             }
             ps.close();
+            
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al intentar borrar Comida");
         }
     }
-    public void modificarPaciente(Comida comida) {
-        String sql = "UPDATE comida SET (nombre, detalle, cantCalorias, estado) WHERE idComida = ?";
+    public void modificarComida(Comida comida) {
+        String sql = "UPDATE comida SET nombre=?, detalle=?, cantCalorias=?, estado=? WHERE idComida = ?";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
@@ -58,6 +59,7 @@ public class Comida_Data {
             ps.setString(2, comida.getDetalle());
             ps.setDouble(3, comida.getCantCalorias());
             ps.setBoolean(4, comida.isEstado());
+            ps.setInt(5, comida.getIdComida());
             int exito = ps.executeUpdate();
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
@@ -82,7 +84,7 @@ public class Comida_Data {
                 comida.setNombre(rs.getString("nombre"));
                 comida.setDetalle(rs.getString("detalle"));
                 comida.setCantCalorias(rs.getInt("cantCalorias"));
-                comida.setEstado(true);
+                comida.setEstado(rs.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el Menú");
             }

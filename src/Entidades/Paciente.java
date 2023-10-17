@@ -6,25 +6,25 @@ public class Paciente implements Comparable<Paciente> {
     private String nombre;
     private String apellido;
     private int dni;
-    private double pesoActual;
     private int edad;
+    private double pesoActual;
     private String domicilio;
     private int celular;
     private boolean estado;
 
-    public Paciente(int idPaciente, String nombre, String apellido, int dni, double pesoActual, int edad, String domicilio, int celular, boolean estado) {
+    public Paciente(int idPaciente, String nombre, String apellido, int dni, int edad, double pesoActual, String domicilio, int celular, boolean estado) {
         this.idPaciente = idPaciente;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
-        this.pesoActual = pesoActual;
         this.edad = edad;
+        this.pesoActual = pesoActual;
         this.domicilio = domicilio;
         this.celular = celular;
         this.estado = estado;
     }
 
-    public Paciente(String nombre, String apellido, int dni, double pesoActual, int edad, String domicilio, int celular, boolean estado) {
+    public Paciente(String nombre, String apellido, int dni, int edad, double pesoActual, String domicilio, int celular, boolean estado) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;

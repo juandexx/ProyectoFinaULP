@@ -7,7 +7,7 @@ import java.util.TreeSet;
 import javax.swing.table.DefaultTableModel;
 
 public class Gestor_Dieta extends javax.swing.JInternalFrame {
-
+    
     private Dieta_Data ddb;
     private Paciente_Data pdb;
     private DefaultTableModel modelo = new DefaultTableModel() {

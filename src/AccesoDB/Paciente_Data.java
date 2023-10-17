@@ -62,7 +62,7 @@ public class Paciente_Data {
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
-            ps.setString(1, paciente.getNombre());
+             ps.setString(1, paciente.getNombre());
             ps.setString(2, paciente.getApellido());
             ps.setInt(3, paciente.getDni());
             ps.setInt(4, paciente.getEdad());

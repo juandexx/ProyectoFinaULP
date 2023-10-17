@@ -11,6 +11,7 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
     private Paciente_Data pdb;
 
     public Gestor_Paciente(Paciente_Data pdb) {
+
         initComponents();
         this.pdb = pdb;
         agregarValidacionDNI();
@@ -18,8 +19,7 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
         setupApellidoField();
         agregarValidacionCelular();
         agregarValidacionEdad();
-        
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -252,7 +252,7 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
             boolean estado = RBestado.isSelected();
             if (validarNombre(nombre)) {
                 if (validarNombre(apellido)) {
-                    Paciente nuevo = new Paciente(nombre, apellido, dni, pesoActual, edad, domicilio, celular, estado);
+                    Paciente nuevo = new Paciente(nombre, apellido, dni, edad, pesoActual, domicilio, celular, estado);
                     pdb.agregarPaciente(nuevo);
                     limpiarCampos();
                 } else {
@@ -283,7 +283,7 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
             double pesoActual = Double.valueOf(TFpeso.getText());
             int celular = Integer.parseInt(TFcelular.getText());
             boolean estado = RBestado.isSelected();
-            Paciente nuevo = new Paciente(idPaciente, nombre, apellido, dni, pesoActual, edad, domicilio, celular, estado);
+            Paciente nuevo = new Paciente(idPaciente, nombre, apellido, dni, edad, pesoActual, domicilio, celular, estado);
             pdb.modificarPaciente(nuevo);
             limpiarCampos();
         } catch (NumberFormatException e) {
@@ -303,7 +303,6 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
             TFedad.setText(String.valueOf(paciente.getEdad()));
             TFid.setText(String.valueOf(paciente.getIdPaciente()));
             RBestado.setSelected(paciente.isEstado());
-            
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Ingrese Dni de paciente");
         } catch (NullPointerException e) {
@@ -369,65 +368,70 @@ public class Gestor_Paciente extends javax.swing.JInternalFrame {
     private boolean validarNombre(String nombre) {
         return nombre.matches("[a-zA-Z ]+");
     }
-private void agregarValidacionDNI() {
-    TFdni.addKeyListener(new java.awt.event.KeyAdapter() {
-        @Override
-        public void keyTyped(java.awt.event.KeyEvent evt) {
-            char c = evt.getKeyChar();
-            if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
-                evt.consume();
-                JOptionPane.showMessageDialog(null, "Ingrese solo números en el campo de DNI.");
+
+    private void agregarValidacionDNI() {
+        TFdni.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                char c = evt.getKeyChar();
+                if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) )) {
+                    evt.consume();
+                   // JOptionPane.showMessageDialog(null, "Ingrese solo números en el campo de DNI.");
+                }
             }
-        }
-    });
-}
-private void setupNombreField() {
-    TFnombre.addKeyListener(new KeyAdapter() {
-        @Override
-        public void keyTyped(KeyEvent e) {
-            char c = e.getKeyChar();
-            if (!Character.isLetter(c) && c != ' ') {
-                e.consume(); // Consumir (ignorar) el evento de tecla no alfabética
-                JOptionPane.showMessageDialog(null, "Ingrese solo letras y espacios en el campo de Nombre.");
+        });
+    }
+
+    private void setupNombreField() {
+        TFnombre.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isLetter(c) && c != ' ') {
+                    e.consume(); // Consumir (ignorar) el evento de tecla no alfabética
+                    //JOptionPane.showMessageDialog(null, "Ingrese solo letras y espacios en el campo de Nombre.");
+                }
             }
-        }
-    });
-}
-private void setupApellidoField() {
-    TFapellido.addKeyListener(new KeyAdapter() {
-        @Override
-        public void keyTyped(KeyEvent e) {
-            char c = e.getKeyChar();
-            if (!Character.isLetter(c) && c != ' ') {
-                e.consume(); // Consumir (ignorar) el evento de tecla no alfabética
-                JOptionPane.showMessageDialog(null, "Ingrese solo letras y espacios en el campo de Apellido.");
+        });
+    }
+
+    private void setupApellidoField() {
+        TFapellido.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isLetter(c) && c != ' ') {
+                    e.consume(); // Consumir (ignorar) el evento de tecla no alfabética
+                    //JOptionPane.showMessageDialog(null, "Ingrese solo letras y espacios en el campo de Apellido.");
+                }
             }
-        }
-    });
-}
-private void agregarValidacionCelular() {
-    TFcelular.addKeyListener(new java.awt.event.KeyAdapter() {
-        @Override
-        public void keyTyped(java.awt.event.KeyEvent evt) {
-            char c = evt.getKeyChar();
-            if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
-                evt.consume();
-                JOptionPane.showMessageDialog(null, "Ingrese solo números en el campo de Celular.");
+        });
+    }
+
+    private void agregarValidacionCelular() {
+        TFcelular.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                char c = evt.getKeyChar();
+                if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) )) {
+                    evt.consume();
+                    //JOptionPane.showMessageDialog(null, "Ingrese solo números en el campo de Celular.");
+                }
             }
-        }
-    });
-}
-private void agregarValidacionEdad() {
-    TFedad.addKeyListener(new java.awt.event.KeyAdapter() {
-        @Override
-        public void keyTyped(java.awt.event.KeyEvent evt) {
-            char c = evt.getKeyChar();
-            if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
-                evt.consume();
-                JOptionPane.showMessageDialog(null, "Ingrese solo números en el campo de Edad.");
+        });
+    }
+
+    private void agregarValidacionEdad() {
+        TFedad.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                char c = evt.getKeyChar();
+                if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) )) {
+                    evt.consume();
+                    //JOptionPane.showMessageDialog(null, "Ingrese solo números en el campo de Edad.");
+                }
             }
-        }
-    });
-}
+        });
+    }
 
 }
