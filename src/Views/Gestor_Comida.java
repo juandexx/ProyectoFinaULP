@@ -62,6 +62,7 @@ public class Gestor_Comida extends javax.swing.JInternalFrame {
             }
         });
 
+        Bagregar.setBackground(new java.awt.Color(102, 255, 102));
         Bagregar.setText("Agregar");
         Bagregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,6 +70,7 @@ public class Gestor_Comida extends javax.swing.JInternalFrame {
             }
         });
 
+        Bmodificar.setBackground(new java.awt.Color(255, 255, 51));
         Bmodificar.setText("Modificar");
         Bmodificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +78,7 @@ public class Gestor_Comida extends javax.swing.JInternalFrame {
             }
         });
 
+        Beliminar.setBackground(new java.awt.Color(255, 102, 102));
         Beliminar.setText("Eliminar");
         Beliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,31 +97,31 @@ public class Gestor_Comida extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Bagregar)
-                                .addGap(75, 75, 75)
+                                .addGap(46, 46, 46)
                                 .addComponent(Bmodificar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(Beliminar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TFid, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TFnombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TFcalorias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(55, 55, 55)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Bbuscar)
-                                    .addComponent(RBestado))
-                                .addGap(89, 89, 89))
-                            .addComponent(jScrollPane1)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel5))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(TFnombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(TFcalorias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(TFid, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(55, 55, 55)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(Bbuscar)
+                                        .addComponent(RBestado))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(113, 113, 113)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,6 +186,7 @@ public class Gestor_Comida extends javax.swing.JInternalFrame {
             boolean estado = RBestado.isSelected();
             Comida nuevo = new Comida(nombre, detalle, cantCalorias, estado);
             cdb.agregarComida(nuevo);
+            limpiarCampos();
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Ha ingresado un parametro invalido, reintente");
         }
@@ -195,13 +199,15 @@ public class Gestor_Comida extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BeliminarActionPerformed
 
     private void BbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbuscarActionPerformed
-        int idComida = Integer.parseInt(TFid.getText());
-        Comida comida = cdb.buscarComida(idComida);
-
+        //int idComida = Integer.parseInt(TFid.getText());
+        
+        String nombre = TFnombre.getText();
+        Comida comida = cdb.buscarComida(nombre);
         TFnombre.setText(comida.getNombre());
         TFcalorias.setText(String.valueOf(comida.getCantCalorias()));
         TAdescripcion.setText(comida.getDetalle());
         RBestado.setSelected(comida.isEstado());
+        TFid.setText(String.valueOf(comida.getIdComida()));
     }//GEN-LAST:event_BbuscarActionPerformed
 
 

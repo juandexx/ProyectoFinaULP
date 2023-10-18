@@ -71,16 +71,16 @@ public class Comida_Data {
         }
     }
 
-    public Comida buscarComida(int idComida) {
-    String sql = "SELECT idComida, nombre, detalle, cantCalorias, estado FROM comida WHERE idComida = ?";
+    public Comida buscarComida(String nombre) {
+    String sql = "SELECT idComida, nombre, detalle, cantCalorias, estado FROM comida WHERE nombre = ?";
     Comida comida = null;
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, idComida);
+            ps.setString(1, nombre);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 comida = new Comida();
-                comida.setIdComida(idComida);
+                comida.setIdComida(rs.getInt("idComida"));
                 comida.setNombre(rs.getString("nombre"));
                 comida.setDetalle(rs.getString("detalle"));
                 comida.setCantCalorias(rs.getInt("cantCalorias"));
