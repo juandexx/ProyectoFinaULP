@@ -34,6 +34,9 @@ public class Dieta {
         this.estado = estado;
     }
 
+    public Dieta() {
+    }
+
     public int getIdDieta() {
         return idDieta;
     }

@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 public class Dieta_Data {
@@ -79,4 +80,32 @@ public class Dieta_Data {
             JOptionPane.showMessageDialog(null, "Error al acceder al paciente " + ex.getMessage());
         }
     }
+
+    public Dieta buscarDieta(String nombre) {
+        String sql = "SELECT idDieta, nombre, idPaciente, pesoInicial, pesoFinal, fechaInicial, fechaFinal, estado FROM dieta WHERE nombre = ?";
+        Dieta dieta = new Dieta();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nombre);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                dieta.setNombre(rs.getString("nombre"));
+                dieta.setIdDieta(rs.getInt("idDieta"));
+                dieta.setIdPaciente(rs.getInt("idPaciente"));
+                dieta.setPesoActual(rs.getDouble("pesoInicial"));
+                dieta.setPesoFinal(rs.getDouble("pesoFinal"));
+                dieta.setFechaInicial(rs.getDate("fechaInicial").toLocalDate());
+                dieta.setFechaFinal(rs.getDate("fechaFinal").toLocalDate());
+                dieta.setEstado(rs.getBoolean("estado"));
+                JOptionPane.showMessageDialog(null, "Dieta encontrada");
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe la Dieta");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a Dieta" + ex.getMessage());
+        }
+        return dieta;
+    }
+    
 }
