@@ -6,19 +6,17 @@ public class Dieta {
 
     private int idDieta;
     private String nombre;
-    private Paciente idPaciente;
-    private Comida comida;
+    private int idPaciente;
     private LocalDate fechaInicial;
     private LocalDate fechaFinal;
-    private Paciente pesoActual;
+    private double pesoActual;
     private double pesoFinal;
     private boolean estado;
 
-    public Dieta(int idDieta, String nombre, Paciente idPaciente, Comida comida, LocalDate fechaInicial, LocalDate fechaFinal, Paciente pesoActual, double pesoFinal, boolean estado) {
+    public Dieta(int idDieta, String nombre, int idPaciente, LocalDate fechaInicial, LocalDate fechaFinal, double pesoActual, double pesoFinal, boolean estado) {
         this.idDieta = idDieta;
         this.nombre = nombre;
         this.idPaciente = idPaciente;
-        this.comida = comida;
         this.fechaInicial = fechaInicial;
         this.fechaFinal = fechaFinal;
         this.pesoActual = pesoActual;
@@ -26,18 +24,14 @@ public class Dieta {
         this.estado = estado;
     }
 
-    public Dieta(String nombre, Paciente idPaciente, Comida comida, LocalDate fechaInicial, LocalDate fechaFinal, Paciente pesoActual, double pesoFinal, boolean estado) {
+    public Dieta(String nombre, int idPaciente, LocalDate fechaInicial, LocalDate fechaFinal, double pesoActual, double pesoFinal, boolean estado) {
         this.nombre = nombre;
         this.idPaciente = idPaciente;
-        this.comida = comida;
         this.fechaInicial = fechaInicial;
         this.fechaFinal = fechaFinal;
         this.pesoActual = pesoActual;
         this.pesoFinal = pesoFinal;
         this.estado = estado;
-    }
-
-    public Dieta() {
     }
 
     public int getIdDieta() {
@@ -56,20 +50,12 @@ public class Dieta {
         this.nombre = nombre;
     }
 
-    public Paciente getIdPaciente() {
+    public int getIdPaciente() {
         return idPaciente;
     }
 
-    public void setIdPaciente(Paciente idPaciente) {
+    public void setIdPaciente(int idPaciente) {
         this.idPaciente = idPaciente;
-    }
-
-    public Comida getComida() {
-        return comida;
-    }
-
-    public void setComida(Comida comida) {
-        this.comida = comida;
     }
 
     public LocalDate getFechaInicial() {
@@ -88,11 +74,11 @@ public class Dieta {
         this.fechaFinal = fechaFinal;
     }
 
-    public Paciente getPesoActual() {
+    public double getPesoActual() {
         return pesoActual;
     }
 
-    public void setPesoActual(Paciente pesoActual) {
+    public void setPesoActual(double pesoActual) {
         this.pesoActual = pesoActual;
     }
 
@@ -114,6 +100,7 @@ public class Dieta {
 
     @Override
     public String toString() {
-        return "Dieta{" + "idDieta=" + idDieta + ", nombre=" + nombre + ", idPaciente=" + idPaciente + ", comida=" + comida + ", fechaInicial=" + fechaInicial + ", fechaFinal=" + fechaFinal + ", pesoActual=" + pesoActual + ", pesoFinal=" + pesoFinal + ", estado=" + estado + '}';
-    }           
+        return "Dieta{" + "idDieta=" + idDieta + ", nombre=" + nombre + ", idPaciente=" + idPaciente + ", fechaInicial=" + fechaInicial + ", fechaFinal=" + fechaFinal + ", pesoActual=" + pesoActual + ", pesoFinal=" + pesoFinal + ", estado=" + estado + '}';
+    }
+
 }

@@ -19,13 +19,13 @@ public class Dieta_Data {
         con = Coneccion_Data.getConexion();
     }
 
-    public void agregarPaciente(Dieta dieta) {
+    public void agregarDieta(Dieta dieta) {
         String sql = "INSERT INTO dieta (nombre, idPaciente, pesoInicial, pesoFinal, fechaInicial, fechaFinal, estado) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, dieta.getNombre());
-            ps.setInt(2, paciente.getIdPaciente());
-            ps.setDouble(3, paciente.getPesoActual());
+            ps.setInt(2, dieta.getIdPaciente());
+            ps.setDouble(3, dieta.getPesoActual());
             ps.setDouble(4, dieta.getPesoFinal());
             ps.setDate(5, Date.valueOf(dieta.getFechaInicial()));
             ps.setDate(6, Date.valueOf(dieta.getFechaFinal()));

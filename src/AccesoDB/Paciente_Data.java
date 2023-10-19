@@ -134,30 +134,5 @@ public class Paciente_Data {
         }
         return pacientes;
     }
-    /*
-    public List<Paciente> listarPacientesNoActivos() {
-        ArrayList<Paciente> pacientes = new ArrayList<>();
-        try {
-            String sql = "SELECT * FROM alumno WHERE estado = 0 ";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Paciente paciente = new Paciente();
-                paciente.setIdPaciente(rs.getInt("idPaciente"));
-                paciente.setDni(rs.getInt("dni"));
-                paciente.setApellido(rs.getString("apellido"));
-                paciente.setNombre(rs.getString("nombre"));
-                paciente.setDomicilio(rs.getString("domicilio"));
-                paciente.setCelular(rs.getInt("celular"));
-                paciente.setEstado(rs.getBoolean("estado"));
-                pacientes.add(paciente);
-            }
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Pacientes " + ex.getMessage());
-        }
-        return pacientes;
-    }
-     */
-
+    
 }
