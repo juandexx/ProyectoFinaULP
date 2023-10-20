@@ -4,6 +4,8 @@ import AccesoDB.Dieta_Data;
 import AccesoDB.Paciente_Data;
 import Entidades.Dieta;
 import Entidades.Paciente;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.time.LocalDate;
 import java.time.ZoneId;
 
@@ -16,6 +18,8 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
         initComponents();
         this.ddb = ddb;
         this.pdb = pdb;
+        agregarValidacionDni();
+        setupNombreField();
     }
 
     @SuppressWarnings("unchecked")
@@ -198,13 +202,14 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
                             .addComponent(BbuscarPaciente)
                             .addComponent(TFdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TFnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BbuscarDieta)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TFidDieta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(RBestado))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(TFnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(BbuscarDieta)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(RBestado)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -315,4 +320,29 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
         TFpesoInicial.setText("");
         TFpesoFinal.setText("");
     }
+ private void agregarValidacionDni() {
+        TFdni.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                char c = evt.getKeyChar();
+                if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) )) {
+                    evt.consume();
+                    //JOptionPane.showMessageDialog(null, "Ingrese solo números en el campo de Edad.");
+                }
+            }
+        });
+    }
+private void setupNombreField() {
+        TFnombre.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isLetter(c) && c != ' ') {
+                    e.consume(); // Consumir (ignorar) el evento de tecla no alfabética
+                    //JOptionPane.showMessageDialog(null, "Ingrese solo letras y espacios en el campo de Nombre.");
+                }
+            }
+        });
+    }
 }
+
