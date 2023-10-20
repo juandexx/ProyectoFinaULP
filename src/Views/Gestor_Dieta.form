@@ -69,7 +69,7 @@
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Bactualizar" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
                                       <Component id="Beliminar" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -156,7 +156,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Bguardar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Beliminar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Bactualizar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="134" max="32767" attributes="0"/>
           </Group>
@@ -281,10 +281,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BeliminarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="Bactualizar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modificar Tratamiento"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BactualizarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="BbuscarDieta">
       <Properties>

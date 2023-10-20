@@ -39,7 +39,7 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
         DCfinal = new com.toedter.calendar.JDateChooser();
         Bguardar = new javax.swing.JButton();
         Beliminar = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        Bactualizar = new javax.swing.JButton();
         BbuscarDieta = new javax.swing.JButton();
         RBestado = new javax.swing.JRadioButton();
         TFdni = new javax.swing.JTextField();
@@ -96,7 +96,12 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton4.setText("Modificar Tratamiento");
+        Bactualizar.setText("Modificar Tratamiento");
+        Bactualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BactualizarActionPerformed(evt);
+            }
+        });
 
         BbuscarDieta.setText("Buscar Tratamiento");
         BbuscarDieta.addActionListener(new java.awt.event.ActionListener() {
@@ -153,7 +158,7 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton4)
+                                        .addComponent(Bactualizar)
                                         .addGap(137, 137, 137)
                                         .addComponent(Beliminar))
                                     .addGroup(layout.createSequentialGroup()
@@ -217,7 +222,7 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Bguardar)
                     .addComponent(Beliminar)
-                    .addComponent(jButton4))
+                    .addComponent(Bactualizar))
                 .addContainerGap(134, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -250,8 +255,9 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BbuscarPacienteActionPerformed
 
     private void BeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BeliminarActionPerformed
-        String nombre = TFnombre.getText();
-
+        int idDieta = Integer.parseInt(TFidDieta.getText());
+        ddb.eliminarPaciente(idDieta);
+        limpiarCampos();
     }//GEN-LAST:event_BeliminarActionPerformed
 
     private void BbuscarDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbuscarDietaActionPerformed
@@ -259,10 +265,23 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
         Dieta dieta = ddb.buscarDieta(nombre);
         TFidDieta.setText(String.valueOf(dieta.getIdDieta()));
         RBestado.setSelected(dieta.isEstado());
-
     }//GEN-LAST:event_BbuscarDietaActionPerformed
 
+    private void BactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BactualizarActionPerformed
+        String nombre = TFnombre.getText();
+        int idPaciente = Integer.parseInt(TFidPaciente.getText());
+        double pesoInicial = Double.valueOf(TFpesoInicial.getText());
+        double pesoFinal = Double.valueOf(TFpesoFinal.getText());
+        LocalDate fechaInicial = DCinicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechaFinal = DCfinal.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        boolean estado = RBestado.isSelected();
+        Dieta nueva = new Dieta(nombre, idPaciente, fechaInicial, fechaFinal, pesoInicial, pesoFinal, estado);
+        ddb.modificarPaciente(nueva);
+        limpiarCampos();
+    }//GEN-LAST:event_BactualizarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Bactualizar;
     private javax.swing.JButton BbuscarDieta;
     private javax.swing.JButton BbuscarPaciente;
     private javax.swing.JButton Beliminar;
@@ -276,7 +295,6 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
     private javax.swing.JTextField TFnombre;
     private javax.swing.JTextField TFpesoFinal;
     private javax.swing.JTextField TFpesoInicial;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel16;
