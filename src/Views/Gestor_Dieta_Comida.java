@@ -4,7 +4,6 @@ import AccesoDB.Comida_Data;
 import AccesoDB.Dieta_Data;
 import Entidades.Comida;
 import Entidades.Horario;
-import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 public class Gestor_Dieta_Comida extends javax.swing.JInternalFrame {
@@ -21,10 +20,8 @@ public class Gestor_Dieta_Comida extends javax.swing.JInternalFrame {
         initComponents();
         cargarCombo();
         armarCabecera();
-
         this.cdb = cdb;
         this.ddb = ddb;
-        //cargarComidas();
     }
 
     @SuppressWarnings("unchecked")
@@ -202,7 +199,6 @@ public class Gestor_Dieta_Comida extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_BsalirActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Bsalir;
     private javax.swing.JComboBox<Horario> CBhorario;
@@ -252,13 +248,14 @@ public class Gestor_Dieta_Comida extends javax.swing.JInternalFrame {
 //                comida.isEstado(),});
 //        }
 //    }
+
     private void borrarFilas() {
         int f = Tcomidas.getRowCount() - 1;
         for (; f >= 0; f--) {
             modelo.removeRow(f);
         }
     }
- // El metodo anterior es la abreviacion de este aqui abajo
+    // El metodo anterior es la abreviacion de este aqui abajo
 //    private void borrarFilas(){
 //        int filas=Tcomidas.getRowCount()-1;
 //        for(int f=filas;f>=0;f--){
