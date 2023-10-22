@@ -28,7 +28,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
@@ -41,17 +41,15 @@
                                           </Group>
                                       </Group>
                                       <EmptySpace min="33" pref="33" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="TFpesoInicial" max="32767" attributes="0"/>
-                                              <Component id="TFnombre" max="32767" attributes="0"/>
-                                              <Component id="DCinicio" alignment="0" pref="140" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Component id="TFdni" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="TFpesoInicial" pref="140" max="32767" attributes="0"/>
+                                          <Component id="TFnombre" max="32767" attributes="0"/>
+                                          <Component id="TFdni" alignment="0" pref="140" max="32767" attributes="0"/>
+                                          <Component id="DCinicio" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="57" max="32767" attributes="0"/>
+                              <EmptySpace pref="46" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
@@ -60,7 +58,7 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                       <Component id="DCfinal" min="-2" pref="130" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -113,11 +111,10 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel16" min="-2" pref="37" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="DCinicio" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="jLabel16" min="-2" pref="37" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="TFidPaciente" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel6" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
@@ -136,23 +133,25 @@
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel9" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="TFpesoInicial" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel5" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="TFpesoFinal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel9" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                                  <Component id="TFpesoInicial" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel5" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                                  <Component id="TFpesoFinal" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="DCinicio" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel2" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                                   <Component id="jLabel7" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="DCfinal" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <Component id="DCfinal" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -160,7 +159,7 @@
                   <Component id="Beliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Bactualizar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="134" max="32767" attributes="0"/>
+              <EmptySpace pref="127" max="32767" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
@@ -263,10 +262,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="TFpesoFinal">
     </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="DCinicio">
-    </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="DCfinal">
-    </Component>
     <Component class="javax.swing.JButton" name="Bguardar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Iniciar Tratamiento"/>
@@ -315,6 +310,10 @@
         </Property>
         <Property name="text" type="java.lang.String" value="ID paciente"/>
       </Properties>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="DCinicio">
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="DCfinal">
     </Component>
   </SubComponents>
 </Form>

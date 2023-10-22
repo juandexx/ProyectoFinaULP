@@ -7,6 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.TreeSet;
 import javax.swing.JOptionPane;
 
 public class Comida_Data {
@@ -92,9 +95,51 @@ public class Comida_Data {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder al Menú" + ex.getMessage());
         }
-        return comida;
-    
+        return comida;    
 }
        
+    public ArrayList <Comida> getComidas(){
+        ArrayList <Comida> listaComidas = new ArrayList <>();
+        try {
+            String sql = "SELECT * FROM comida WHERE estado = 1 ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Comida comida = new Comida();
+                comida.setIdComida(rs.getInt("idComida"));
+                comida.setNombre(rs.getString("nombre"));
+                comida.setDetalle(rs.getString("detalle"));
+                comida.setCantCalorias(rs.getInt("cantCalorias"));
+                comida.setEstado(rs.getBoolean("estado"));
+                listaComidas.add(comida);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a Comida" + ex.getMessage());
+        }
+    return listaComidas;
+    }
+    
+//public TreeSet <Comida> getComidas(){
+//        TreeSet <Comida> listaComidas = new TreeSet <>();
+//        try {
+//            String sql = "SELECT * FROM comida WHERE estado = 1 ";
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
+//                Comida comida = new Comida();
+//                comida.setIdComida(rs.getInt("idComida"));
+//                comida.setNombre(rs.getString("nombre"));
+//                comida.setDetalle(rs.getString("detalle"));
+//                comida.setCantCalorias(rs.getInt("cantCalorias"));
+//                comida.setEstado(rs.getBoolean("estado"));
+//                listaComidas.add(comida);
+//            }
+//            ps.close();
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "Error al acceder a Comida" + ex.getMessage());
+//        }
+//    return listaComidas;
+//    }
 }
 

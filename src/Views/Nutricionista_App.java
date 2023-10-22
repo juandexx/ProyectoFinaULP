@@ -13,9 +13,9 @@ public class Nutricionista_App extends javax.swing.JFrame {
     private Paciente pac;
     private Comida_Data cdb;
     private Dieta_Data ddb;
-    
+
     public Nutricionista_App() {
-        
+
         initComponents();
         this.setLocationRelativeTo(null);// Aparece la pantalla centrada y no en la esquina superior izquierda
         pdb = new Paciente_Data();
@@ -44,8 +44,6 @@ public class Nutricionista_App extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
 
@@ -122,14 +120,13 @@ public class Nutricionista_App extends javax.swing.JFrame {
 
         jMenu2.setText("Dieta-Menú");
 
-        jMenuItem8.setText("Paciente-Dieta");
+        jMenuItem8.setText("EditarDietas");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem8);
-
-        jMenuItem9.setText("Dietas Activas");
-        jMenu2.add(jMenuItem9);
-
-        jMenuItem10.setText("Dietas Finalizadas");
-        jMenu2.add(jMenuItem10);
 
         SoyUnMenu.add(jMenu2);
 
@@ -174,7 +171,7 @@ public class Nutricionista_App extends javax.swing.JFrame {
     }//GEN-LAST:event_infoMenuActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-       DesktopMain.removeAll();
+        DesktopMain.removeAll();
         DesktopMain.repaint();
         Gestor_Dieta gd = new Gestor_Dieta(ddb, pdb);
         gd.setVisible(true);
@@ -182,9 +179,17 @@ public class Nutricionista_App extends javax.swing.JFrame {
         DesktopMain.moveToFront(gd);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        DesktopMain.removeAll();
+        DesktopMain.repaint();
+        Gestor_Dieta_Comida gdc = new Gestor_Dieta_Comida(cdb, ddb);
+        gdc.setVisible(true);
+        DesktopMain.add(gdc);
+        DesktopMain.moveToFront(gdc);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
     public static void main(String args[]) {
-        
-        //</editor-fold>
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Nutricionista_App().setVisible(true);
@@ -204,7 +209,6 @@ public class Nutricionista_App extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
@@ -213,6 +217,5 @@ public class Nutricionista_App extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,8 @@
 package Entidades;
 
-public class Comida {
+import javax.swing.JOptionPane;
+
+public class Comida implements Comparable<Comida> {
 
     private int idComida;
     private String nombre;
@@ -23,7 +25,6 @@ public class Comida {
         this.estado = estado;
     }
 
-    
     public int getIdComida() {
         return idComida;
     }
@@ -63,7 +64,7 @@ public class Comida {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-        
+
     public Comida(String nombre, String detalle, int cantCalorias) {
         this.nombre = nombre;
         this.detalle = detalle;
@@ -78,7 +79,12 @@ public class Comida {
         return "Comida{" + "idComida=" + idComida + ", nombre=" + nombre + ", detalle=" + detalle + ", cantCalorias=" + cantCalorias + ", estado=" + estado + '}';
     }
 
-    
-
-    
+    @Override
+    public int compareTo(Comida t) {
+        if (idComida == t.idComida) {
+            return 0;
+        } else{
+            return 1;
+        }
+    }
 }
