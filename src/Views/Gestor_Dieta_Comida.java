@@ -11,16 +11,20 @@ public class Gestor_Dieta_Comida extends javax.swing.JInternalFrame {
 
     private Comida_Data cdb;
     private Dieta_Data ddb;
-    private DefaultTableModel modelo = new DefaultTableModel();
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int f, int c) {
+            return false;
+        }
+    };
 
     public Gestor_Dieta_Comida(Comida_Data cdb, Dieta_Data ddb) {
         initComponents();
         cargarCombo();
         armarCabecera();
-        
+
         this.cdb = cdb;
         this.ddb = ddb;
-        cargarComidas();
+        //cargarComidas();
     }
 
     @SuppressWarnings("unchecked")
@@ -117,16 +121,14 @@ public class Gestor_Dieta_Comida extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(33, 33, 33)
                                 .addComponent(TFnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(119, 119, 119)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,10 +156,10 @@ public class Gestor_Dieta_Comida extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(TFnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88)
                 .addComponent(jButton1)
-                .addGap(40, 40, 40))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
 
         pack();
@@ -168,8 +170,15 @@ public class Gestor_Dieta_Comida extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_CBhorarioActionPerformed
 
     private void TFnombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFnombreKeyReleased
-        if (TFnombre.getText().startsWith("nombre")) {
-
+        borrarFilas();
+        for (Comida com : cdb.getComidas()) {
+            if (com.getNombre().startsWith(TFnombre.getText())) {
+                modelo.addRow(new Object[]{
+                    com.getIdComida(),
+                    com.getNombre(),
+                    com.getCantCalorias(),
+                    com.isEstado(),});
+            }
         }
     }//GEN-LAST:event_TFnombreKeyReleased
 
@@ -193,6 +202,7 @@ public class Gestor_Dieta_Comida extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
     private void cargarCombo() {
         CBhorario.addItem(Horario.Desayuno);
         CBhorario.addItem(Horario.Almuerzo);
@@ -208,30 +218,30 @@ public class Gestor_Dieta_Comida extends javax.swing.JInternalFrame {
         modelo.addColumn("Estado");
         Tcomidas.setModel(modelo);
     }
-
+//  Este metodo es funcional pero sin el uso del keyRealese
 //    private void cargarComidas() {
-//        ArrayList<Comida> comidas = cdb.getComidas();
-//        for (Comida comida : comidas) {
-//            Object[] fila = {
+//        ArrayList<Comida> listarComidas = new ArrayList<>();
+//        listarComidas = cdb.getComidas();
+//        Tcomidas.removeAll();
+//        for (Comida comida : listarComidas) {
+//            modelo.addRow(new Object[]{
 //                comida.getIdComida(),
 //                comida.getNombre(),
 //                comida.getCantCalorias(),
-//                comida.isEstado() ? "Activo" : "Inactivo"
-//            };
-//            modelo.addRow(fila);
+//                comida.isEstado(),});
 //        }
 //    }
-    private void cargarComidas() {
-        ArrayList<Comida> listarComidas = new ArrayList<>();
-        listarComidas = cdb.getComidas();
-        Tcomidas.removeAll();
-        for (Comida comida : listarComidas) {
-            modelo.addRow(new Object[]{
-                comida.getIdComida(),
-                comida.getNombre(),
-                comida.getCantCalorias(),
-                comida.isEstado(),});
+    private void borrarFilas() {
+        int f = Tcomidas.getRowCount() - 1;
+        for (; f >= 0; f--) {
+            modelo.removeRow(f);
         }
     }
-
+ // El metodo anterior es la abreviacion de este aqui abajo
+//    private void borrarFilas(){
+//        int filas=Tcomidas.getRowCount()-1;
+//        for(int f=filas;f>=0;f--){
+//            modelo.removeRow(f);
+//        }
+//    }
 }
