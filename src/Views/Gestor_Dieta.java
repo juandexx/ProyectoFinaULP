@@ -49,6 +49,7 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         DCinicio = new com.toedter.calendar.JDateChooser();
         DCfinal = new com.toedter.calendar.JDateChooser();
+        Bsalir = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 2, 18)); // NOI18N
         jLabel1.setText("Nombre de dieta");
@@ -119,6 +120,13 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
         jLabel10.setFont(new java.awt.Font("Dialog", 2, 18)); // NOI18N
         jLabel10.setText("ID paciente");
 
+        Bsalir.setText("Salir");
+        Bsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BsalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -137,10 +145,7 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel6)
-                                            .addComponent(jLabel1)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(Bguardar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                            .addComponent(jLabel1))
                                         .addGap(33, 33, 33)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(TFpesoInicial, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
@@ -158,25 +163,30 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
                                         .addGap(29, 29, 29)
                                         .addComponent(DCfinal, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGap(0, 402, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Bactualizar)
-                                        .addGap(137, 137, 137)
-                                        .addComponent(Beliminar))
+                                        .addComponent(BbuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(153, 153, 153))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(BbuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(153, 153, 153))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(BbuscarDieta)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(TFidDieta, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(TFidPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                                        .addComponent(BbuscarDieta)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TFidDieta, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TFidPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(Bguardar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(41, 41, 41)
+                                .addComponent(Bactualizar)
+                                .addGap(29, 29, 29)
+                                .addComponent(Beliminar)
+                                .addGap(28, 28, 28)
+                                .addComponent(Bsalir)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(18, 18, 18)
                 .addComponent(RBestado)
                 .addGap(19, 19, 19))
@@ -226,8 +236,9 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Bguardar)
+                    .addComponent(Bactualizar)
                     .addComponent(Beliminar)
-                    .addComponent(Bactualizar))
+                    .addComponent(Bsalir))
                 .addContainerGap(127, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -285,12 +296,17 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
         limpiarCampos();
     }//GEN-LAST:event_BactualizarActionPerformed
 
+    private void BsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BsalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_BsalirActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Bactualizar;
     private javax.swing.JButton BbuscarDieta;
     private javax.swing.JButton BbuscarPaciente;
     private javax.swing.JButton Beliminar;
     private javax.swing.JButton Bguardar;
+    private javax.swing.JButton Bsalir;
     private com.toedter.calendar.JDateChooser DCfinal;
     private com.toedter.calendar.JDateChooser DCinicio;
     private javax.swing.JRadioButton RBestado;

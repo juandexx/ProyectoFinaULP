@@ -1,4 +1,3 @@
-
 package AccesoDB;
 
 import Entidades.Comida;
@@ -8,17 +7,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.TreeSet;
 import javax.swing.JOptionPane;
 
 public class Comida_Data {
-    
+
     private Connection con = null;
-    
-    public Comida_Data (){
+
+    public Comida_Data() {
         con = Coneccion_Data.getConexion();
     }
-    public void agregarComida(Comida comida){
+
+    public void agregarComida(Comida comida) {
         String sql = "INSERT INTO comida (nombre, detalle, cantCalorias, estado) VALUES (?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -37,6 +36,7 @@ public class Comida_Data {
             JOptionPane.showMessageDialog(null, "Error al agregar Comida. Reintente." + ex.getMessage());
         }
     }
+
     public void eliminarComida(int idComida) {
         try {
             String sql = "UPDATE comida SET estado = 0 WHERE idComida = ? ";
@@ -47,11 +47,12 @@ public class Comida_Data {
                 JOptionPane.showMessageDialog(null, "Comida borrada correctamente");
             }
             ps.close();
-            
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al intentar borrar Comida");
         }
     }
+
     public void modificarComida(Comida comida) {
         String sql = "UPDATE comida SET nombre=?, detalle=?, cantCalorias=?, estado=? WHERE idComida = ?";
         PreparedStatement ps = null;
@@ -74,8 +75,8 @@ public class Comida_Data {
     }
 
     public Comida buscarComida(String nombre) {
-    String sql = "SELECT idComida, nombre, detalle, cantCalorias, estado FROM comida WHERE nombre = ?";
-    Comida comida = null;
+        String sql = "SELECT idComida, nombre, detalle, cantCalorias, estado FROM comida WHERE nombre = ?";
+        Comida comida = null;
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, nombre);
@@ -94,11 +95,11 @@ public class Comida_Data {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder al Menú" + ex.getMessage());
         }
-        return comida;    
-}
-       
-    public ArrayList <Comida> getComidas(){
-        ArrayList <Comida> listaComidas = new ArrayList <>();
+        return comida;
+    }
+
+    public ArrayList<Comida> getComidas() {
+        ArrayList<Comida> listaComidas = new ArrayList<>();
         try {
             String sql = "SELECT * FROM comida WHERE estado = 1 ";
             PreparedStatement ps = con.prepareStatement(sql);
@@ -116,9 +117,9 @@ public class Comida_Data {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a Comida" + ex.getMessage());
         }
-    return listaComidas;
+        return listaComidas;
     }
-    
+
 //public TreeSet <Comida> getComidas(){
 //        TreeSet <Comida> listaComidas = new TreeSet <>();
 //        try {
@@ -141,4 +142,3 @@ public class Comida_Data {
 //    return listaComidas;
 //    }
 }
-
