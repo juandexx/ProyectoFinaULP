@@ -30,14 +30,10 @@ public class Nutricionista_App extends javax.swing.JFrame {
         jMenuItem11 = new javax.swing.JMenuItem();
         DesktopMain = new javax.swing.JDesktopPane();
         SoyUnMenu = new javax.swing.JMenuBar();
-        JMpaciente = new javax.swing.JMenu();
-        infoPaciente = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        JMmenú = new javax.swing.JMenu();
-        infoMenu = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        MIdieta = new javax.swing.JMenu();
+        MIpaciente = new javax.swing.JMenuItem();
+        MIcomida = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         jMenuItem11.setText("jMenuItem11");
@@ -57,53 +53,38 @@ public class Nutricionista_App extends javax.swing.JFrame {
             .addGap(0, 439, Short.MAX_VALUE)
         );
 
-        JMpaciente.setText("Paciente");
-
-        infoPaciente.setText("Paciente Info");
-        infoPaciente.addActionListener(new java.awt.event.ActionListener() {
+        MIdieta.setText("Administración");
+        MIdieta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                infoPacienteActionPerformed(evt);
+                MIdietaActionPerformed(evt);
             }
         });
-        JMpaciente.add(infoPaciente);
 
-        SoyUnMenu.add(JMpaciente);
-
-        jMenu1.setText("Dieta");
-
-        jMenuItem5.setText("Dieta...");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        MIpaciente.setText("Paciente");
+        MIpaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                MIpacienteActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem5);
+        MIdieta.add(MIpaciente);
 
-        SoyUnMenu.add(jMenu1);
-
-        JMmenú.setText("Menú");
-
-        infoMenu.setText("Menú Info");
-        infoMenu.addActionListener(new java.awt.event.ActionListener() {
+        MIcomida.setText("Comidas");
+        MIcomida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                infoMenuActionPerformed(evt);
+                MIcomidaActionPerformed(evt);
             }
         });
-        JMmenú.add(infoMenu);
+        MIdieta.add(MIcomida);
 
-        SoyUnMenu.add(JMmenú);
-
-        jMenu2.setText("Dieta-Menú");
-
-        jMenuItem8.setText("EditarDietas");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem2.setText("Dieta");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem8);
+        MIdieta.add(jMenuItem2);
 
-        SoyUnMenu.add(jMenu2);
+        SoyUnMenu.add(MIdieta);
 
         jMenu4.setText("Salir");
         SoyUnMenu.add(jMenu4);
@@ -124,41 +105,36 @@ public class Nutricionista_App extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void infoPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoPacienteActionPerformed
-        DesktopMain.removeAll();
+    private void MIpacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MIpacienteActionPerformed
+       DesktopMain.removeAll();
         DesktopMain.repaint();
         Gestor_Paciente pd = new Gestor_Paciente(pdb);
         pd.setVisible(true);
         DesktopMain.add(pd);
         DesktopMain.moveToFront(pd);
-    }//GEN-LAST:event_infoPacienteActionPerformed
+    }//GEN-LAST:event_MIpacienteActionPerformed
 
-    private void infoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoMenuActionPerformed
-        DesktopMain.removeAll();
+    private void MIcomidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MIcomidaActionPerformed
+       DesktopMain.removeAll();
         DesktopMain.repaint();
         Gestor_Comida cd = new Gestor_Comida(cdb);
         cd.setVisible(true);
         DesktopMain.add(cd);
         DesktopMain.moveToFront(cd);
-    }//GEN-LAST:event_infoMenuActionPerformed
+    }//GEN-LAST:event_MIcomidaActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        DesktopMain.removeAll();
-        DesktopMain.repaint();
-        Gestor_Dieta_Comida gdc = new Gestor_Dieta_Comida(cdb, ddb);
-        gdc.setVisible(true);
-        DesktopMain.add(gdc);
-        DesktopMain.moveToFront(gdc);
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    private void MIdietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MIdietaActionPerformed
+        
+    }//GEN-LAST:event_MIdietaActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        DesktopMain.removeAll();
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+         DesktopMain.removeAll();
         DesktopMain.repaint();
         Gestor_Dieta gd = new Gestor_Dieta(ddb, pdb, cdb);
         gd.setVisible(true);
         DesktopMain.add(gd);
         DesktopMain.moveToFront(gd);
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     public static void main(String args[]) {
 
@@ -171,16 +147,12 @@ public class Nutricionista_App extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane DesktopMain;
-    private javax.swing.JMenu JMmenú;
-    private javax.swing.JMenu JMpaciente;
+    private javax.swing.JMenuItem MIcomida;
+    private javax.swing.JMenu MIdieta;
+    private javax.swing.JMenuItem MIpaciente;
     private javax.swing.JMenuBar SoyUnMenu;
-    private javax.swing.JMenuItem infoMenu;
-    private javax.swing.JMenuItem infoPaciente;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }
