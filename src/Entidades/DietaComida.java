@@ -2,55 +2,74 @@
 package Entidades;
 
 public class DietaComida {
-    private Horario momento;
-    private Comida comida;
-    private int id;
-    private Dieta dieta;
-
-    public DietaComida(Horario momento, Comida comida, int id, Dieta dieta) {
-        this.momento = momento;
-        this.comida = comida;
-        this.id = id;
-        this.dieta = dieta;
-    }
-
-    public DietaComida(int id) {
-        this.id = id;
-    }
+    private String horario;
+    private int idComida;
+    private int idDietaComida;
+    private int idDieta;
+    private boolean estado;
 
     public DietaComida() {
     }
 
-    public Horario getMomento() {
-        return momento;
+    public DietaComida(String horario, int idComida, int idDietaComida, int idDieta, boolean estado) {
+        this.horario = horario;
+        this.idComida = idComida;
+        this.idDietaComida = idDietaComida;
+        this.idDieta = idDieta;
+        this.estado = estado;
     }
 
-    public void setMomento(Horario momento) {
-        this.momento = momento;
+    public DietaComida(String horario, int idComida, int idDieta, boolean estado) {
+        this.horario = horario;
+        this.idComida = idComida;
+        this.idDieta = idDieta;
+        this.estado = estado;
     }
 
-    public Comida getComida() {
-        return comida;
+    public String getHorario() {
+        return horario;
     }
 
-    public void setComida(Comida comida) {
-        this.comida = comida;
+    public void setHorario(String horario) {
+        this.horario = horario;
     }
 
-    public int getId() {
-        return id;
+    public int getIdComida() {
+        return idComida;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdComida(int idComida) {
+        this.idComida = idComida;
     }
 
-    public Dieta getDieta() {
-        return dieta;
+    public int getIdDietaComida() {
+        return idDietaComida;
     }
 
-    public void setDieta(Dieta dieta) {
-        this.dieta = dieta;
+    public void setIdDietaComida(int idDietaComida) {
+        this.idDietaComida = idDietaComida;
     }
+
+    public int getIdDieta() {
+        return idDieta;
+    }
+
+    public void setIdDieta(int idDieta) {
+        this.idDieta = idDieta;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return "DietaComida{" + "horario=" + horario + ", idComida=" + idComida + ", idDietaComida=" + idDietaComida + ", idDieta=" + idDieta + ", estado=" + estado + '}';
+    }
+
     
 }

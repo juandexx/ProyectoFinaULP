@@ -4,6 +4,7 @@ import AccesoDB.Comida_Data;
 import AccesoDB.Dieta_Data;
 import Entidades.Comida;
 import Entidades.Horario;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Gestor_Dieta_Comida extends javax.swing.JInternalFrame {
@@ -30,9 +31,9 @@ public class Gestor_Dieta_Comida extends javax.swing.JInternalFrame {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        TFnombreDieta = new javax.swing.JTextField();
         CBhorario = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        Bguardar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         Tcomidas = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -40,6 +41,8 @@ public class Gestor_Dieta_Comida extends javax.swing.JInternalFrame {
         TFnombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         Bsalir = new javax.swing.JButton();
+        Bbuscar = new javax.swing.JButton();
+        TFidDieta = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -68,7 +71,12 @@ public class Gestor_Dieta_Comida extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("Guardar ");
+        Bguardar.setText("Guardar ");
+        Bguardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BguardarActionPerformed(evt);
+            }
+        });
 
         Tcomidas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -99,6 +107,13 @@ public class Gestor_Dieta_Comida extends javax.swing.JInternalFrame {
         Bsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BsalirActionPerformed(evt);
+            }
+        });
+
+        Bbuscar.setText("Buscar");
+        Bbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BbuscarActionPerformed(evt);
             }
         });
 
@@ -136,19 +151,24 @@ public class Gestor_Dieta_Comida extends javax.swing.JInternalFrame {
                                 .addComponent(TFnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jButton1)
+                                    .addComponent(Bguardar)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(Bsalir))
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
+                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(80, 80, 80)
+                        .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(CBhorario, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(TFnombreDieta, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Bbuscar)
+                                .addGap(46, 46, 46)
+                                .addComponent(TFidDieta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -156,8 +176,10 @@ public class Gestor_Dieta_Comida extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(TFnombreDieta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(Bbuscar)
+                    .addComponent(TFidDieta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -170,9 +192,9 @@ public class Gestor_Dieta_Comida extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(Bguardar)
                     .addComponent(Bsalir))
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
 
         pack();
@@ -199,12 +221,34 @@ public class Gestor_Dieta_Comida extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_BsalirActionPerformed
 
+    private void BguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BguardarActionPerformed
+       String nombre = TFnombreDieta.getText();
+       int idDieta = Integer.parseInt(TFidDieta.getText());       
+       
+       int horario = CBhorario.getSelectedIndex();
+       int filasS = Tcomidas.getSelectedRow();
+       if(filasS!=-1){
+           
+       }else{
+           JOptionPane.showMessageDialog(null, "No se seleccionó Menú de la tabla");
+       }
+    }//GEN-LAST:event_BguardarActionPerformed
+
+    private void BbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbuscarActionPerformed
+       String nombre = TFnombreDieta.getText();
+       int idDieta = ddb.buscarDieta(nombre).getIdDieta();
+       TFidDieta.setText(""+idDieta);
+    }//GEN-LAST:event_BbuscarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Bbuscar;
+    private javax.swing.JButton Bguardar;
     private javax.swing.JButton Bsalir;
     private javax.swing.JComboBox<Horario> CBhorario;
+    private javax.swing.JTextField TFidDieta;
     private javax.swing.JTextField TFnombre;
+    private javax.swing.JTextField TFnombreDieta;
     private javax.swing.JTable Tcomidas;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -217,7 +261,6 @@ public class Gestor_Dieta_Comida extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
     private void cargarCombo() {
@@ -235,7 +278,7 @@ public class Gestor_Dieta_Comida extends javax.swing.JInternalFrame {
         modelo.addColumn("Estado");
         Tcomidas.setModel(modelo);
     }
-//  Este metodo es funcional pero sin el uso del keyRealese
+//  Este metodo es funcional pero sin el uso del keyRelease
 //    private void cargarComidas() {
 //        ArrayList<Comida> listarComidas = new ArrayList<>();
 //        listarComidas = cdb.getComidas();

@@ -8,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 public class Dieta_Data {
@@ -107,5 +106,5 @@ public class Dieta_Data {
         }
         return dieta;
     }
-    
+
 }
