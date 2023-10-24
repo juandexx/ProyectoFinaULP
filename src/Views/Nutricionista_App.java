@@ -23,6 +23,7 @@ public class Nutricionista_App extends javax.swing.JFrame {
         pdb = new Paciente_Data();
         cdb = new Comida_Data();
         ddb = new Dieta_Data();
+        dcd = new DietaComida_Data();
     }
 
     @SuppressWarnings("unchecked")
