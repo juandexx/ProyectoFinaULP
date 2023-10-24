@@ -17,19 +17,17 @@ public class DietaComida_Data {
     }
 
     public void agregarDietaComida(DietaComida dietacomida) {
-        String sql = "INSERT INTO dietacomida (idDietaComida, idDieta, idComida, horario, estado) VALUES (?, ?, ?, ?, ?)";
-        
+        String sql = "INSERT INTO dietacomida (idDieta, idComida, horario, estado) VALUES (?, ?, ?, ?)";                            
         try {
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, dietacomida.getIdDietaComida());
-            ps.setInt(2, dietacomida.getIdDieta());
-            ps.setInt(3, dietacomida.getIdComida());
-            ps.setString(4, dietacomida.getHorario().toString());
-            ps.setBoolean(5, dietacomida.isEstado());
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);           
+            ps.setInt(1, dietacomida.getIdDieta());
+            ps.setInt(2, dietacomida.getIdComida());
+            ps.setString(3, dietacomida.getHorario());
+            ps.setBoolean(4, dietacomida.isEstado());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                dietacomida.setIdDieta(rs.getInt(1));
+                dietacomida.setIdDietaComida(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Creación de Dieta correcta");
             }
             ps.close();

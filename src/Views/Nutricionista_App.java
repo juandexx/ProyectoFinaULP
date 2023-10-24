@@ -2,6 +2,7 @@ package Views;
 
 import AccesoDB.Comida_Data;
 import AccesoDB.Coneccion_Data;
+import AccesoDB.DietaComida_Data;
 import AccesoDB.Dieta_Data;
 import AccesoDB.Paciente_Data;
 import Entidades.Paciente;
@@ -13,6 +14,7 @@ public class Nutricionista_App extends javax.swing.JFrame {
     private Paciente pac;
     private Comida_Data cdb;
     private Dieta_Data ddb;
+    private DietaComida_Data dcd;
 
     public Nutricionista_App() {
 
@@ -130,7 +132,7 @@ public class Nutricionista_App extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
          DesktopMain.removeAll();
         DesktopMain.repaint();
-        Gestor_Dieta gd = new Gestor_Dieta(ddb, pdb, cdb);
+        Gestor_Dieta gd = new Gestor_Dieta(ddb, pdb, cdb, dcd);
         gd.setVisible(true);
         DesktopMain.add(gd);
         DesktopMain.moveToFront(gd);

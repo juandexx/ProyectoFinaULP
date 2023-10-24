@@ -1,11 +1,11 @@
-
 package Entidades;
 
 public class DietaComida {
-    private String horario;
-    private int idComida;
+
     private int idDietaComida;
+    private int idComida;
     private int idDieta;
+    private String horario;
     private boolean estado;
 
     public DietaComida() {
@@ -19,7 +19,7 @@ public class DietaComida {
         this.estado = estado;
     }
 
-    public DietaComida(String horario, int idComida, int idDieta, boolean estado) {
+    public DietaComida(int idDieta, int idComida, String horario, boolean estado) {
         this.horario = horario;
         this.idComida = idComida;
         this.idDieta = idDieta;
@@ -71,5 +71,4 @@ public class DietaComida {
         return "DietaComida{" + "horario=" + horario + ", idComida=" + idComida + ", idDietaComida=" + idDietaComida + ", idDieta=" + idDieta + ", estado=" + estado + '}';
     }
 
-    
 }
