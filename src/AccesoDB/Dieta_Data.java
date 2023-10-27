@@ -8,6 +8,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class Dieta_Data {
@@ -107,4 +111,31 @@ public class Dieta_Data {
         return dieta;
     }
 
+    public List<Dieta> getDietas() {
+        ArrayList<Dieta> listaDietas = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM dieta WHERE fechaInicial <= 2023-10-10 AND fechaFinal >= 2023-12-31";
+              //SELECT * FROM dieta WHERE fechaFinal >= '2023-10-10' AND fechaInicial <= '2023-12-31';
+            PreparedStatement ps = con.prepareStatement(sql);                      
+//            ps.setDate(1, fechaInicial);
+//            ps.setDate(2, fechaFinal);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Dieta dieta = new Dieta();
+                dieta.setIdDieta(rs.getInt("idDieta"));                
+                dieta.setNombre(rs.getString("nombre"));
+                dieta.setIdPaciente(rs.getInt("idPaciente"));
+                dieta.setPesoActual(rs.getDouble("pesoInicial"));
+                dieta.setPesoFinal(rs.getDouble("pesoFinal"));
+                dieta.setFechaInicial(rs.getDate("fechaInicial").toLocalDate());
+                dieta.setFechaFinal(rs.getDate("fechaFinal").toLocalDate());
+                dieta.setEstado(rs.getBoolean("estado"));
+                listaDietas.add(dieta);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a Dieta " + ex.getMessage());
+        }
+        return listaDietas;
+    }
 }

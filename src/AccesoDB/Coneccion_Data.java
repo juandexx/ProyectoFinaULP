@@ -20,7 +20,7 @@ public class Coneccion_Data {
             try {
                 Class.forName("org.mariadb.jdbc.Driver");
                 connection = DriverManager.getConnection(URL + DB, USUARIO, PASSWORD);
-                JOptionPane.showMessageDialog(null, "conectado");
+                //JOptionPane.showMessageDialog(null, "conectado");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "error al conectarse a la BD " + ex.getMessage());
             } catch (ClassNotFoundException ex) {

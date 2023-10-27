@@ -37,6 +37,7 @@ public class Nutricionista_App extends javax.swing.JFrame {
         MIpaciente = new javax.swing.JMenuItem();
         MIcomida = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         jMenuItem11.setText("jMenuItem11");
@@ -87,6 +88,14 @@ public class Nutricionista_App extends javax.swing.JFrame {
         });
         MIdieta.add(jMenuItem2);
 
+        jMenuItem1.setText("Consultas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        MIdieta.add(jMenuItem1);
+
         SoyUnMenu.add(MIdieta);
 
         jMenu4.setText("Salir");
@@ -131,13 +140,22 @@ public class Nutricionista_App extends javax.swing.JFrame {
     }//GEN-LAST:event_MIdietaActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-         DesktopMain.removeAll();
+        DesktopMain.removeAll();
         DesktopMain.repaint();
         Gestor_Dieta gd = new Gestor_Dieta(ddb, pdb, cdb, dcd);
         gd.setVisible(true);
         DesktopMain.add(gd);
         DesktopMain.moveToFront(gd);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+       DesktopMain.removeAll();
+        DesktopMain.repaint();
+        Gestor_Consultas cons = new Gestor_Consultas(pdb, ddb);
+        cons.setVisible(true);
+        DesktopMain.add(cons);
+        DesktopMain.moveToFront(cons);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     public static void main(String args[]) {
 
@@ -155,6 +173,7 @@ public class Nutricionista_App extends javax.swing.JFrame {
     private javax.swing.JMenuItem MIpaciente;
     private javax.swing.JMenuBar SoyUnMenu;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
