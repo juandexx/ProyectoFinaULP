@@ -111,32 +111,53 @@ public class Dieta_Data {
         return dieta;
     }
 
-    public List<Dieta> getDietas() {
-    ArrayList<Dieta> listaDietas = new ArrayList<>();
-    try {
-        String sql = "SELECT * FROM dieta WHERE fechaInicial <= ? AND fechaFinal >= ?";
-        PreparedStatement ps = con.prepareStatement(sql);
-        LocalDate fechaInicio = LocalDate.of(2023, 10, 10);
-        LocalDate fechaFin = LocalDate.of(2023, 12, 31);
-        ps.setDate(1, Date.valueOf(fechaInicio));
-        ps.setDate(2, Date.valueOf(fechaFin));
-        ResultSet rs = ps.executeQuery();
-        while (rs.next()) {
-            Dieta dieta = new Dieta();
-            dieta.setIdDieta(rs.getInt("idDieta"));
-            dieta.setNombre(rs.getString("nombre"));
-            dieta.setIdPaciente(rs.getInt("idPaciente"));
-            dieta.setPesoActual(rs.getDouble("pesoInicial"));
-            dieta.setPesoFinal(rs.getDouble("pesoFinal"));
-            dieta.setFechaInicial(rs.getDate("fechaInicial").toLocalDate());
-            dieta.setFechaFinal(rs.getDate("fechaFinal").toLocalDate());
-            dieta.setEstado(rs.getBoolean("estado"));
-            listaDietas.add(dieta);
+    public List<Dieta> getDietasVigentes() {
+        ArrayList<Dieta> listaDietasVigentes = new ArrayList<>();
+        String sql = "SELECT * FROM dieta WHERE fechaFinal >= CURRENT_DATE";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Dieta dieta = new Dieta();
+                dieta.setIdDieta(rs.getInt("idDieta"));
+                dieta.setNombre(rs.getString("nombre"));
+                dieta.setIdPaciente(rs.getInt("idPaciente"));
+                dieta.setPesoActual(rs.getDouble("pesoInicial"));
+                dieta.setPesoFinal(rs.getDouble("pesoFinal"));
+                dieta.setFechaInicial(rs.getDate("fechaInicial").toLocalDate());
+                dieta.setFechaFinal(rs.getDate("fechaFinal").toLocalDate());
+                dieta.setEstado(rs.getBoolean("estado"));
+                listaDietasVigentes.add(dieta);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a Dieta " + ex.getMessage());
         }
-        ps.close();
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al acceder a Dieta " + ex.getMessage());
+        return listaDietasVigentes;
     }
-    return listaDietas;
-}
+    
+    public List<Dieta> getDietasVencidas() {
+        ArrayList<Dieta> listaDietasVencidas = new ArrayList<>();
+        String sql = "SELECT * FROM dieta WHERE fechaFinal < CURRENT_DATE";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Dieta dieta = new Dieta();
+                dieta.setIdDieta(rs.getInt("idDieta"));
+                dieta.setNombre(rs.getString("nombre"));
+                dieta.setIdPaciente(rs.getInt("idPaciente"));
+                dieta.setPesoActual(rs.getDouble("pesoInicial"));
+                dieta.setPesoFinal(rs.getDouble("pesoFinal"));
+                dieta.setFechaInicial(rs.getDate("fechaInicial").toLocalDate());
+                dieta.setFechaFinal(rs.getDate("fechaFinal").toLocalDate());
+                dieta.setEstado(rs.getBoolean("estado"));
+                listaDietasVencidas.add(dieta);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a Dieta " + ex.getMessage());
+        }
+        return listaDietasVencidas;
+    }
 }

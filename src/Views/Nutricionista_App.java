@@ -151,7 +151,7 @@ public class Nutricionista_App extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
        DesktopMain.removeAll();
         DesktopMain.repaint();
-        Gestor_Consultas cons = new Gestor_Consultas(pdb, ddb);
+        Gestor_Consultas cons = new Gestor_Consultas(pdb, ddb, cdb);
         cons.setVisible(true);
         DesktopMain.add(cons);
         DesktopMain.moveToFront(cons);

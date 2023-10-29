@@ -119,6 +119,30 @@ public class Comida_Data {
         }
         return listaComidas;
     }
+    
+    public ArrayList<Comida> busqXcalorias(int cantCalorias) {
+        ArrayList<Comida> xCalorias = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM comida WHERE cantCalorias >= ? ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, cantCalorias);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Comida comida = new Comida();
+                comida.setIdComida(rs.getInt("idComida"));
+                comida.setNombre(rs.getString("nombre"));
+                comida.setDetalle(rs.getString("detalle"));
+                comida.setCantCalorias(rs.getInt("cantCalorias"));
+                comida.setEstado(rs.getBoolean("estado"));
+                xCalorias.add(comida);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a Comida" + ex.getMessage());
+        }
+        return xCalorias;
+    }
+    
 
 //public TreeSet <Comida> getComidas(){
 //        TreeSet <Comida> listaComidas = new TreeSet <>();
