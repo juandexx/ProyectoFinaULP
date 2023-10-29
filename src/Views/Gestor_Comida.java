@@ -12,9 +12,7 @@ public class Gestor_Comida extends javax.swing.JInternalFrame {
     public Gestor_Comida(Comida_Data cdb) {
         initComponents();
         this.cdb = cdb;
-//        validarNombre();
-        validarCalorias();
-        
+        validarCalorias();        
     }
 
     @SuppressWarnings("unchecked")

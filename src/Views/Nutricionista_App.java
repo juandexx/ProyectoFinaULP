@@ -4,6 +4,7 @@ import AccesoDB.Comida_Data;
 import AccesoDB.Coneccion_Data;
 import AccesoDB.DietaComida_Data;
 import AccesoDB.Dieta_Data;
+import AccesoDB.Historial_Data;
 import AccesoDB.Paciente_Data;
 import Entidades.Paciente;
 
@@ -15,15 +16,17 @@ public class Nutricionista_App extends javax.swing.JFrame {
     private Comida_Data cdb;
     private Dieta_Data ddb;
     private DietaComida_Data dcd;
+    private Historial_Data hdb;
 
     public Nutricionista_App() {
 
         initComponents();
-        this.setLocationRelativeTo(null);// Aparece la pantalla centrada y no en la esquina superior izquierda
+        this.setLocationRelativeTo(null);
         pdb = new Paciente_Data();
         cdb = new Comida_Data();
         ddb = new Dieta_Data();
         dcd = new DietaComida_Data();
+        hdb = new Historial_Data();
     }
 
     @SuppressWarnings("unchecked")
@@ -151,7 +154,7 @@ public class Nutricionista_App extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
        DesktopMain.removeAll();
         DesktopMain.repaint();
-        Gestor_Consultas cons = new Gestor_Consultas(pdb, ddb, cdb);
+        Gestor_Consultas cons = new Gestor_Consultas(pdb, ddb, cdb, hdb);
         cons.setVisible(true);
         DesktopMain.add(cons);
         DesktopMain.moveToFront(cons);

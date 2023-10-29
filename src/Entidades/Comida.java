@@ -1,7 +1,5 @@
 package Entidades;
 
-import javax.swing.JOptionPane;
-
 public class Comida implements Comparable<Comida> {
 
     private int idComida;

@@ -133,6 +133,5 @@ public class Paciente_Data {
             JOptionPane.showMessageDialog(null, " Error al acceder Pacientes " + ex.getMessage());
         }
         return pacientes;
-    }
-    
+    }    
 }

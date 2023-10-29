@@ -3,30 +3,28 @@ package Entidades;
 
 import java.time.LocalDate;
 
-
 public class Historial {
     public int idHistorial;
-    public Paciente paciente;
+    public int idPaciente;
     public double peso;
     public LocalDate fechaRegistro;
 
     public Historial() {
     }
 
-    public Historial(Paciente paciente, double peso, LocalDate fechaRegistro) {
-        this.paciente = paciente;
-        this.peso = peso;
-        this.fechaRegistro = fechaRegistro;
-    }
-
-    public Historial(int idHistorial, Paciente paciente, double peso, LocalDate fechaRegistro) {
+    public Historial(int idHistorial, int idPaciente, double peso, LocalDate fechaRegistro) {
         this.idHistorial = idHistorial;
-        this.paciente = paciente;
+        this.idPaciente = idPaciente;
         this.peso = peso;
         this.fechaRegistro = fechaRegistro;
     }
 
-    
+    public Historial(int idPaciente, double peso, LocalDate fechaRegistro) {
+        this.idPaciente = idPaciente;
+        this.peso = peso;
+        this.fechaRegistro = fechaRegistro;
+    }
+
     public int getIdHistorial() {
         return idHistorial;
     }
@@ -35,12 +33,12 @@ public class Historial {
         this.idHistorial = idHistorial;
     }
 
-    public Paciente getPaciente() {
-        return paciente;
+    public int getIdPaciente() {
+        return idPaciente;
     }
 
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
+    public void setIdPaciente(int idPaciente) {
+        this.idPaciente = idPaciente;
     }
 
     public double getPeso() {
@@ -61,7 +59,7 @@ public class Historial {
 
     @Override
     public String toString() {
-        return super.toString(); //To change body of generated methods, choose Tools | Templates.
-    }
+        return "Historial{" + "idHistorial=" + idHistorial + ", idPaciente=" + idPaciente + ", peso=" + peso + ", fechaRegistro=" + fechaRegistro + '}';
+    } 
     
 }

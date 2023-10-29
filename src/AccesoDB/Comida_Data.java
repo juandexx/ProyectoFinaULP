@@ -141,28 +141,5 @@ public class Comida_Data {
             JOptionPane.showMessageDialog(null, "Error al acceder a Comida" + ex.getMessage());
         }
         return xCalorias;
-    }
-    
-
-//public TreeSet <Comida> getComidas(){
-//        TreeSet <Comida> listaComidas = new TreeSet <>();
-//        try {
-//            String sql = "SELECT * FROM comida WHERE estado = 1 ";
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ResultSet rs = ps.executeQuery();
-//            while (rs.next()) {
-//                Comida comida = new Comida();
-//                comida.setIdComida(rs.getInt("idComida"));
-//                comida.setNombre(rs.getString("nombre"));
-//                comida.setDetalle(rs.getString("detalle"));
-//                comida.setCantCalorias(rs.getInt("cantCalorias"));
-//                comida.setEstado(rs.getBoolean("estado"));
-//                listaComidas.add(comida);
-//            }
-//            ps.close();
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, "Error al acceder a Comida" + ex.getMessage());
-//        }
-//    return listaComidas;
-//    }
+    }    
 }

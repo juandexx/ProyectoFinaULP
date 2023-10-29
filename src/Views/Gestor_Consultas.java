@@ -2,34 +2,38 @@ package Views;
 
 import AccesoDB.Comida_Data;
 import AccesoDB.Dieta_Data;
+import AccesoDB.Historial_Data;
 import AccesoDB.Paciente_Data;
 import Entidades.Comida;
 import Entidades.Dieta;
+import Entidades.Historial;
 import Entidades.Paciente;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-
-//➢	Se necesita listar los pacientes que a la fecha de culminación, no han llegado al peso buscado. //Dieta
 
 public class Gestor_Consultas extends javax.swing.JInternalFrame {
 
     DefaultTableModel mod = new DefaultTableModel();
     DefaultTableModel mod2 = new DefaultTableModel();
-    DefaultTableModel mod3 = new DefaultTableModel();    
+    DefaultTableModel mod3 = new DefaultTableModel();
+    DefaultTableModel mod4 = new DefaultTableModel();
     private Paciente_Data pdb;
     private Dieta_Data ddb;
     private Comida_Data cdb;
+    private Historial_Data hdb;
 
-    public Gestor_Consultas(Paciente_Data pdb, Dieta_Data ddb, Comida_Data cdb) {
+    public Gestor_Consultas(Paciente_Data pdb, Dieta_Data ddb, Comida_Data cdb, Historial_Data hdb) {
         initComponents();
         armarCabeceraVigentes();
         armarCabeceraVencidas();
-        armarCabeceraBusqXcalorias();       
+        armarCabeceraBusqXcalorias();
+        armarcabeceraBusqPesos();
         this.pdb = pdb;
         this.ddb = ddb;
         this.cdb = cdb;
+        this.hdb = hdb;
         borrarFilas1();
-        borrarFilas2();        
+        borrarFilas2();
         llenarVigentes();
         llenarVencidas();
     }
@@ -50,21 +54,12 @@ public class Gestor_Consultas extends javax.swing.JInternalFrame {
         jInternalFrame2 = new javax.swing.JInternalFrame();
         jLabel1 = new javax.swing.JLabel();
         TFdni = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        TFidPaciente = new javax.swing.JTextField();
         BbuscarPaciente = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        TFpesoInicio = new javax.swing.JTextField();
-        TFpesoFinal = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
         TFnombrePaciente = new javax.swing.JTextField();
         TFapellidoPaciente = new javax.swing.JTextField();
-        TFfechaInicio = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        TFfechaFinal = new javax.swing.JTextField();
+        TFidPaciente = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        TbusqPesos = new javax.swing.JTable();
         jInternalFrame4 = new javax.swing.JInternalFrame();
         jScrollPane5 = new javax.swing.JScrollPane();
         TbusqXcalorias = new javax.swing.JTable();
@@ -75,6 +70,8 @@ public class Gestor_Consultas extends javax.swing.JInternalFrame {
         Breset = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        borrar.setPreferredSize(new java.awt.Dimension(592, 434));
 
         TDietasVigentes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -126,10 +123,6 @@ public class Gestor_Consultas extends javax.swing.JInternalFrame {
 
         jLabel1.setText("DNI:");
 
-        jLabel2.setText("ID:");
-
-        TFidPaciente.setEditable(false);
-
         BbuscarPaciente.setText("Buscar");
         BbuscarPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,29 +130,24 @@ public class Gestor_Consultas extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel5.setText("Nombre");
-
-        jLabel6.setText("Apellido");
-
-        jLabel7.setText("Peso Inicial");
-
-        jLabel8.setText("Peso Deseado");
-
-        TFpesoInicio.setEditable(false);
-
-        TFpesoFinal.setEditable(false);
-
-        jLabel10.setText("Fecha de Inicio");
-
         TFnombrePaciente.setEditable(false);
 
         TFapellidoPaciente.setEditable(false);
 
-        TFfechaInicio.setEditable(false);
+        TFidPaciente.setEditable(false);
 
-        jLabel9.setText("Fecha de Finalizacion");
-
-        TFfechaFinal.setEditable(false);
+        TbusqPesos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(TbusqPesos);
 
         javax.swing.GroupLayout jInternalFrame2Layout = new javax.swing.GroupLayout(jInternalFrame2.getContentPane());
         jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
@@ -169,44 +157,20 @@ public class Gestor_Consultas extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                        .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(TFnombrePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(TFfechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TFfechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel6)))
-                            .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TFpesoInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TFpesoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TFapellidoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jInternalFrame2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TFdni, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BbuscarPaciente)
+                        .addGap(21, 21, 21)
+                        .addComponent(TFidPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(TFnombrePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TFidPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                        .addComponent(TFapellidoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 43, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jInternalFrame2Layout.setVerticalGroup(
             jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,32 +179,18 @@ public class Gestor_Consultas extends javax.swing.JInternalFrame {
                 .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(TFdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(TFidPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BbuscarPaciente))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
+                    .addComponent(BbuscarPaciente)
                     .addComponent(TFnombrePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TFapellidoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(TFpesoInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(TFfechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(TFpesoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(TFfechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                    .addComponent(TFapellidoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TFidPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Historial Pesajes", jInternalFrame2);
 
+        jInternalFrame4.setPreferredSize(new java.awt.Dimension(584, 178));
         jInternalFrame4.setVisible(true);
 
         TbusqXcalorias.setModel(new javax.swing.table.DefaultTableModel(
@@ -324,26 +274,30 @@ public class Gestor_Consultas extends javax.swing.JInternalFrame {
     private void BbuscarXcaloriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbuscarXcaloriasActionPerformed
         borrarBusqXcalorias();
         int cantCalorias = Integer.parseInt(TFcalorias.getText());
-        List <Comida> busqXcalorias = cdb.busqXcalorias(cantCalorias);
+        List<Comida> busqXcalorias = cdb.busqXcalorias(cantCalorias);
         for (Comida com : busqXcalorias) {
             mod3.addRow(new Object[]{com.getIdComida(), com.getNombre(), com.getCantCalorias(), com.isEstado()});
         }
-        
+
     }//GEN-LAST:event_BbuscarXcaloriasActionPerformed
 
     private void BbuscarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbuscarPacienteActionPerformed
-      int dni = Integer.parseInt(TFdni.getText());
-      Paciente paciente = pdb.buscarPaciente(dni);
-      TFidPaciente.setText(String.valueOf(paciente.getIdPaciente()));
-      TFnombrePaciente.setText(paciente.getNombre());
-      TFapellidoPaciente.setText(paciente.getApellido());
-      TFpesoInicio.setText(String.valueOf(paciente.getPesoActual()));
-      
+        borrarBusqPesos();
+        int dni = Integer.parseInt(TFdni.getText());
+        Paciente paciente = pdb.buscarPaciente(dni);
+        TFidPaciente.setText(String.valueOf(paciente.getIdPaciente()));
+        TFnombrePaciente.setText(paciente.getNombre());
+        TFapellidoPaciente.setText(paciente.getApellido());
+        int idPaciente = Integer.parseInt(TFidPaciente.getText());
+        List<Historial> busqDePesos = hdb.getPesos(idPaciente);
+        for (Historial hist : busqDePesos) {
+            mod4.addRow(new Object[]{hist.getIdPaciente(), hist.getFechaRegistro(), hist.getPeso()});
+        }
     }//GEN-LAST:event_BbuscarPacienteActionPerformed
 
     private void BresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BresetActionPerformed
-       borrarBusqXcalorias();
-       TFcalorias.setText(" ");
+        borrarBusqXcalorias();
+        TFcalorias.setText(" ");
     }//GEN-LAST:event_BresetActionPerformed
 
 
@@ -355,30 +309,21 @@ public class Gestor_Consultas extends javax.swing.JInternalFrame {
     private javax.swing.JTextField TFapellidoPaciente;
     private javax.swing.JTextField TFcalorias;
     private javax.swing.JTextField TFdni;
-    private javax.swing.JTextField TFfechaFinal;
-    private javax.swing.JTextField TFfechaInicio;
     private javax.swing.JTextField TFidPaciente;
     private javax.swing.JTextField TFnombrePaciente;
-    private javax.swing.JTextField TFpesoFinal;
-    private javax.swing.JTextField TFpesoInicio;
+    private javax.swing.JTable TbusqPesos;
     private javax.swing.JTable TbusqXcalorias;
     private javax.swing.JTable TdietasVencidas;
     private javax.swing.JTabbedPane borrar;
     private javax.swing.JInternalFrame jInternalFrame2;
     private javax.swing.JInternalFrame jInternalFrame4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane3;
@@ -430,20 +375,34 @@ public class Gestor_Consultas extends javax.swing.JInternalFrame {
             mod2.addRow(new Object[]{dieta.getIdPaciente(), dieta.getNombre(), dieta.getFechaInicial(), dieta.getFechaFinal(), dieta.isEstado()});
         }
     }
-    
-    private void armarCabeceraBusqXcalorias(){
+
+    private void armarCabeceraBusqXcalorias() {
         mod3.addColumn("ID Comida");
         mod3.addColumn("Nombre");
         mod3.addColumn("Calorías");
         mod3.addColumn("Estado");
         TbusqXcalorias.setModel(mod3);
     }
-    
-   private void borrarBusqXcalorias(){
-       int f = TbusqXcalorias.getRowCount()-1;
-       for (; f >= 0; f--) {
+
+    private void borrarBusqXcalorias() {
+        int f = TbusqXcalorias.getRowCount() - 1;
+        for (; f >= 0; f--) {
             mod3.removeRow(f);
         }
-   }    
-   
+    }
+
+    private void armarcabeceraBusqPesos() {
+        mod4.addColumn("Id Paciente");
+        mod4.addColumn("Fecha de Registro");
+        mod4.addColumn("Peso");
+        TbusqPesos.setModel(mod4);
+    }
+
+    private void borrarBusqPesos() {
+        int f = TbusqPesos.getRowCount() - 1;
+        for (; f >= 0; f--) {
+            mod4.removeRow(f);
+        }
+    }
+
 }

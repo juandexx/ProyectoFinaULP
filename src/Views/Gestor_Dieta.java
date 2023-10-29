@@ -551,8 +551,7 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 char c = evt.getKeyChar();
                 if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) )) {
-                    evt.consume();
-                    //JOptionPane.showMessageDialog(null, "Ingrese solo números en el campo de Edad.");
+                    evt.consume();                   
                 }
             }
         });
@@ -563,8 +562,7 @@ private void setupNombreField() {
             public void keyTyped(KeyEvent e) {
                 char c = e.getKeyChar();
                 if (!Character.isLetter(c) && c != ' ') {
-                    e.consume(); // Consumir (ignorar) el evento de tecla no alfabética
-                    //JOptionPane.showMessageDialog(null, "Ingrese solo letras y espacios en el campo de Nombre.");
+                    e.consume(); 
                 }
             }
         });
