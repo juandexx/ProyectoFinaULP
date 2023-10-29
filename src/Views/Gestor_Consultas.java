@@ -8,6 +8,7 @@ import Entidades.Comida;
 import Entidades.Dieta;
 import Entidades.Historial;
 import Entidades.Paciente;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,7 +22,7 @@ public class Gestor_Consultas extends javax.swing.JInternalFrame {
     private Dieta_Data ddb;
     private Comida_Data cdb;
     private Historial_Data hdb;
-
+    
     public Gestor_Consultas(Paciente_Data pdb, Dieta_Data ddb, Comida_Data cdb, Historial_Data hdb) {
         initComponents();
         armarCabeceraVigentes();
@@ -36,6 +37,9 @@ public class Gestor_Consultas extends javax.swing.JInternalFrame {
         borrarFilas2();
         llenarVigentes();
         llenarVencidas();
+        agregarValidacionDni();
+        agregarValidacionCalorias();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -403,6 +407,28 @@ public class Gestor_Consultas extends javax.swing.JInternalFrame {
         for (; f >= 0; f--) {
             mod4.removeRow(f);
         }
+    }
+    private void agregarValidacionDni() {
+        TFdni.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                char c = evt.getKeyChar();
+                if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) )) {
+                    evt.consume();                   
+                }
+            }
+        });
+    }
+     private void agregarValidacionCalorias() {
+        TFdni.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                char c = evt.getKeyChar();
+                if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) )) {
+                    evt.consume();                   
+                }
+            }
+        });
     }
 
 }
