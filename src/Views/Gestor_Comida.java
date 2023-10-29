@@ -36,12 +36,16 @@ public class Gestor_Comida extends javax.swing.JInternalFrame {
         Beliminar = new javax.swing.JButton();
         Bsalir = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(660, 477));
+
         jLabel1.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Gestor de Comidas");
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("Nombre:");
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("ID");
 
         jLabel4.setText("Descripcion:");
@@ -50,8 +54,16 @@ public class Gestor_Comida extends javax.swing.JInternalFrame {
         TAdescripcion.setRows(5);
         jScrollPane1.setViewportView(TAdescripcion);
 
+        TFid.setPreferredSize(new java.awt.Dimension(16, 24));
+
+        TFnombre.setPreferredSize(new java.awt.Dimension(16, 24));
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setText("Calorías:");
 
+        TFcalorias.setPreferredSize(new java.awt.Dimension(16, 24));
+
+        RBestado.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         RBestado.setText("ESTADO");
         RBestado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,6 +72,7 @@ public class Gestor_Comida extends javax.swing.JInternalFrame {
         });
 
         Bbuscar.setText("Buscar");
+        Bbuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Bbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BbuscarActionPerformed(evt);
@@ -67,7 +80,9 @@ public class Gestor_Comida extends javax.swing.JInternalFrame {
         });
 
         Bagregar.setBackground(new java.awt.Color(102, 255, 102));
+        Bagregar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         Bagregar.setText("Agregar");
+        Bagregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Bagregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BagregarActionPerformed(evt);
@@ -75,7 +90,9 @@ public class Gestor_Comida extends javax.swing.JInternalFrame {
         });
 
         Bmodificar.setBackground(new java.awt.Color(255, 255, 51));
+        Bmodificar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         Bmodificar.setText("Modificar");
+        Bmodificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Bmodificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BmodificarActionPerformed(evt);
@@ -83,14 +100,20 @@ public class Gestor_Comida extends javax.swing.JInternalFrame {
         });
 
         Beliminar.setBackground(new java.awt.Color(255, 102, 102));
+        Beliminar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         Beliminar.setText("Eliminar");
+        Beliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Beliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BeliminarActionPerformed(evt);
             }
         });
 
+        Bsalir.setBackground(new java.awt.Color(153, 153, 153));
+        Bsalir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        Bsalir.setForeground(new java.awt.Color(255, 255, 255));
         Bsalir.setText("Salir");
+        Bsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Bsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BsalirActionPerformed(evt);
@@ -101,10 +124,20 @@ public class Gestor_Comida extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(81, 81, 81)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(Bagregar)
+                        .addGap(46, 46, 46)
+                        .addComponent(Bmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
+                        .addComponent(Beliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Bsalir))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel5))
@@ -112,70 +145,59 @@ public class Gestor_Comida extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TFnombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TFcalorias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(RBestado)
+                        .addGap(98, 98, 98)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Bbuscar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(TFid, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Bagregar)
-                        .addGap(20, 20, 20)
-                        .addComponent(Bmodificar)
-                        .addGap(20, 20, 20)
-                        .addComponent(Beliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Bsalir)))
-                .addGap(17, 17, 17))
+                                .addComponent(TFid, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(RBestado))))
+                .addGap(106, 106, 106))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
+                        .addGap(170, 170, 170)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
+                        .addGap(278, 278, 278)
                         .addComponent(jLabel4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(TFnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(TFcalorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(TFnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel5))
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel4))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Bbuscar)
                             .addComponent(jLabel3)
                             .addComponent(TFid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(RBestado)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Bagregar)
                     .addComponent(Bmodificar)
                     .addComponent(Beliminar)
                     .addComponent(Bsalir))
-                .addGap(10, 10, 10))
+                .addGap(62, 62, 62))
         );
 
         pack();
@@ -188,9 +210,14 @@ public class Gestor_Comida extends javax.swing.JInternalFrame {
             int cantCalorias = Integer.parseInt(TFcalorias.getText());
             String detalle = TAdescripcion.getText();
             boolean estado = RBestado.isSelected();
-            Comida nuevo = new Comida(idComida,nombre, detalle, cantCalorias, estado);
-            cdb.modificarComida(nuevo);
-            limpiarCampos();
+            if (!detalle.trim().isEmpty()) {
+                Comida nuevo = new Comida(idComida, nombre, detalle, cantCalorias, estado);
+                cdb.modificarComida(nuevo);
+                limpiarCampos();
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar una descripción");
+            }
+
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Ha ingresado un parametro invalido, reintente");
         }
@@ -202,9 +229,14 @@ public class Gestor_Comida extends javax.swing.JInternalFrame {
             int cantCalorias = Integer.parseInt(TFcalorias.getText());
             String detalle = TAdescripcion.getText();
             boolean estado = RBestado.isSelected();
-            Comida nuevo = new Comida(nombre, detalle, cantCalorias, estado);
-            cdb.agregarComida(nuevo);
-            limpiarCampos();
+            if (!detalle.trim().isEmpty()) {
+                Comida nuevo = new Comida(nombre, detalle, cantCalorias, estado);
+                cdb.agregarComida(nuevo);
+                limpiarCampos();
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar una descripción");
+            }
+
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Ha ingresado un parametro invalido, reintente");
         }
@@ -254,48 +286,36 @@ public class Gestor_Comida extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-    private boolean validarNombre(String nombre) {
-        return nombre.matches("[a-zA-Z ]+");
-    }
-    
     private void limpiarCampos() {
         TFid.setText("");
-         TFnombre.setText("");
-         TFcalorias.setText("");
-         TAdescripcion.setText("");
-         RBestado.setSelected(false);
+        TFnombre.setText("");
+        TFcalorias.setText("");
+        TAdescripcion.setText("");
+        RBestado.setSelected(false);
     }
-    
-//    private void validarNombre(){
-//        TFnombre.addKeyListener(new java.awt.event.KeyAdapter() {
-//            @Override
-//            public void keyTyped(java.awt.event.KeyEvent evt) {
-//                char c = evt.getKeyChar();
-//                if (!(Character.isLetter(c) || (c == KeyEvent.VK_BACK_SPACE) )) {
-//                    evt.consume();
-//                }
-//            }
-//        });
-//    }
-    
-    private void validarCalorias() {
-        TFcalorias.addKeyListener(new java.awt.event.KeyAdapter() {
+
+    private void validarNombre() {
+        TFnombre.addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 char c = evt.getKeyChar();
-                if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) )) {
+                if (!(Character.isLetter(c))) {
                     evt.consume();
                 }
             }
         });
     }
-    
-    private void validarDescripcion(String detalle){
-        
-        /* 
-            FALTA VALIDAR DESCRIPCION PARA QUE NO QUEDE VACIO
-        */
-        
+
+    private void validarCalorias() {
+        TFcalorias.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                char c = evt.getKeyChar();
+                if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE))) {
+                    evt.consume();
+                }
+            }
+        });
     }
-    
+
 }

@@ -7,6 +7,15 @@ import AccesoDB.Dieta_Data;
 import AccesoDB.Historial_Data;
 import AccesoDB.Paciente_Data;
 import Entidades.Paciente;
+import com.jtattoo.plaf.bernstein.BernsteinLookAndFeel;
+import com.jtattoo.plaf.luna.LunaLookAndFeel;
+import com.jtattoo.plaf.noire.NoireLookAndFeel;
+import java.awt.Dimension;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 
 public class Nutricionista_App extends javax.swing.JFrame {
 
@@ -46,6 +55,8 @@ public class Nutricionista_App extends javax.swing.JFrame {
         jMenuItem11.setText("jMenuItem11");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(660, 477));
+        setSize(new java.awt.Dimension(660, 477));
 
         DesktopMain.setBackground(new java.awt.Color(0, 51, 255));
 
@@ -53,11 +64,11 @@ public class Nutricionista_App extends javax.swing.JFrame {
         DesktopMain.setLayout(DesktopMainLayout);
         DesktopMainLayout.setHorizontalGroup(
             DesktopMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGap(0, 660, Short.MAX_VALUE)
         );
         DesktopMainLayout.setVerticalGroup(
             DesktopMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE)
+            .addGap(0, 454, Short.MAX_VALUE)
         );
 
         MIdieta.setText("Administración");
@@ -134,6 +145,9 @@ public class Nutricionista_App extends javax.swing.JFrame {
         DesktopMain.repaint();
         Gestor_Comida cd = new Gestor_Comida(cdb);
         cd.setVisible(true);
+        
+        
+        
         DesktopMain.add(cd);
         DesktopMain.moveToFront(cd);
     }//GEN-LAST:event_MIcomidaActionPerformed
@@ -164,6 +178,13 @@ public class Nutricionista_App extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
+                try {
+                    UIManager.setLookAndFeel(new BernsteinLookAndFeel());
+                } catch (UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(Nutricionista_App.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
                 new Nutricionista_App().setVisible(true);
             }
         });

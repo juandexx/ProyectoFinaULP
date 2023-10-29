@@ -82,7 +82,6 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
         BagregarDietaComida = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(153, 153, 153));
         setForeground(new java.awt.Color(102, 102, 102));
 
         jLabel16.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
@@ -101,6 +100,7 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
         jLabel9.setText("Peso Inicial:");
 
         BbuscarPaciente.setText("Buscar Paciente");
+        BbuscarPaciente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BbuscarPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BbuscarPacienteActionPerformed(evt);
@@ -160,7 +160,9 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
         );
 
         BactualizarDieta.setBackground(new java.awt.Color(255, 255, 51));
+        BactualizarDieta.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         BactualizarDieta.setText("Modificar Dieta");
+        BactualizarDieta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BactualizarDieta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BactualizarDietaActionPerformed(evt);
@@ -168,6 +170,7 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
         });
 
         BbuscarDieta.setText("Buscar Dieta");
+        BbuscarDieta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BbuscarDieta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BbuscarDietaActionPerformed(evt);
@@ -187,7 +190,9 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
         TFidDieta.setEditable(false);
 
         BcrearDieta.setBackground(new java.awt.Color(102, 255, 102));
+        BcrearDieta.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         BcrearDieta.setText("Crear Dieta");
+        BcrearDieta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BcrearDieta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BcrearDietaActionPerformed(evt);
@@ -195,7 +200,9 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
         });
 
         BeliminarDieta.setBackground(new java.awt.Color(255, 102, 102));
+        BeliminarDieta.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         BeliminarDieta.setText("Eliminar Dieta");
+        BeliminarDieta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BeliminarDieta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BeliminarDietaActionPerformed(evt);
@@ -303,22 +310,32 @@ public class Gestor_Dieta extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(Tcomidas);
 
         BmodificarDietaComida.setBackground(new java.awt.Color(255, 255, 51));
+        BmodificarDietaComida.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         BmodificarDietaComida.setText("Modificar");
+        BmodificarDietaComida.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         BeliminarDietaComida.setBackground(new java.awt.Color(255, 102, 102));
+        BeliminarDietaComida.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         BeliminarDietaComida.setText("Eliminar");
+        BeliminarDietaComida.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         RBestadoDietaComida.setText("Estado");
 
         BagregarDietaComida.setBackground(new java.awt.Color(102, 255, 102));
+        BagregarDietaComida.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         BagregarDietaComida.setText("Guardar");
+        BagregarDietaComida.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BagregarDietaComida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BagregarDietaComidaActionPerformed(evt);
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(153, 153, 153));
+        jButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Salir");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

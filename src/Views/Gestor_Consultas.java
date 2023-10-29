@@ -73,6 +73,7 @@ public class Gestor_Consultas extends javax.swing.JInternalFrame {
         BbuscarXcalorias = new javax.swing.JButton();
         Breset = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(660, 477));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         borrar.setPreferredSize(new java.awt.Dimension(592, 434));
