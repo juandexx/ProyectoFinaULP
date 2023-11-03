@@ -8,14 +8,10 @@ import AccesoDB.Historial_Data;
 import AccesoDB.Paciente_Data;
 import Entidades.Paciente;
 import com.jtattoo.plaf.bernstein.BernsteinLookAndFeel;
-import com.jtattoo.plaf.luna.LunaLookAndFeel;
-import com.jtattoo.plaf.noire.NoireLookAndFeel;
-import java.awt.Dimension;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.plaf.metal.MetalLookAndFeel;
 
 public class Nutricionista_App extends javax.swing.JFrame {
 
@@ -144,10 +140,7 @@ public class Nutricionista_App extends javax.swing.JFrame {
        DesktopMain.removeAll();
         DesktopMain.repaint();
         Gestor_Comida cd = new Gestor_Comida(cdb);
-        cd.setVisible(true);
-        
-        
-        
+        cd.setVisible(true);        
         DesktopMain.add(cd);
         DesktopMain.moveToFront(cd);
     }//GEN-LAST:event_MIcomidaActionPerformed

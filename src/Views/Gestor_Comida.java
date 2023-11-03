@@ -249,6 +249,7 @@ public class Gestor_Comida extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BeliminarActionPerformed
 
     private void BbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbuscarActionPerformed
+        try{
         String nombre = TFnombre.getText();
         Comida comida = cdb.buscarComida(nombre);
         TFnombre.setText(comida.getNombre());
@@ -256,6 +257,9 @@ public class Gestor_Comida extends javax.swing.JInternalFrame {
         TAdescripcion.setText(comida.getDetalle());
         RBestado.setSelected(comida.isEstado());
         TFid.setText(String.valueOf(comida.getIdComida()));
+        }catch(NullPointerException e){
+            
+        }
     }//GEN-LAST:event_BbuscarActionPerformed
 
     private void RBestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RBestadoActionPerformed

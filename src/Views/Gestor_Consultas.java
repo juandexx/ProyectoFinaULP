@@ -52,8 +52,6 @@ public class Gestor_Consultas extends javax.swing.JInternalFrame {
         TDietasVigentes = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         TdietasVencidas = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jInternalFrame2 = new javax.swing.JInternalFrame();
         jLabel1 = new javax.swing.JLabel();
@@ -75,6 +73,8 @@ public class Gestor_Consultas extends javax.swing.JInternalFrame {
 
         setPreferredSize(new java.awt.Dimension(660, 477));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(600, 400));
 
         borrar.setPreferredSize(new java.awt.Dimension(592, 434));
 
@@ -108,21 +108,6 @@ public class Gestor_Consultas extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(TdietasVencidas);
 
         borrar.addTab("Dietas Vencidas", jScrollPane2);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable1);
-
-        borrar.addTab("Dietas No Logradas", jScrollPane3);
 
         jInternalFrame2.setVisible(true);
 
@@ -327,12 +312,10 @@ public class Gestor_Consultas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
     private void armarCabeceraVigentes() {
